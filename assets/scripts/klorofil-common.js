@@ -230,20 +230,20 @@ var menu = '<li>'+
 			'</li>'+
 			'<li>'+
 				'<a href="tiempo.html" class="active">'+
-					'<i class="lnr lnr-clock"></i> <span>Gestión del tiempo</span></a>'+
+					'<i class="lnr lnr-clock"></i> <span>Gestión del tiempo</span>'+
 				'</a>'+
 			'</li>'+
 			'<li>'+
 				'<a href="costes.html" class="active">'+
-					'<i class="lnr lnr-diamond"></i> <span>Gestión de costes</span></a>'+
+					'<i class="lnr lnr-diamond"></i> <span>Gestión de costes</span>'+
 				'</a>'+
 			'</li>'+
 			'<li>'+
 				'<a href="riesgos.html" class="active">'+
-					'<i class="lnr lnr-warning"></i> <span>Gestión de riesgos</span></a>'+
+					'<i class="lnr lnr-warning"></i> <span>Gestión de riesgos</span>'+
 				'</a>'+
 			'</li>';
 
-	$(".ul .nav").html(menu);
+	$("#menu").html(menu);
 
 
