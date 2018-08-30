@@ -222,28 +222,8 @@ $.fn.clickToggle = function( f1, f2 ) {
 
 }
 
-var menu = '<li>'+
-				'<a href="alcance.html" class="active">'+
-					'<i class="lnr lnr-chart-bars"></i>'+
-					'<span>Gestión del Alcance</span>'+
-				'</a>'+
-			'</li>'+
-			'<li>'+
-				'<a href="tiempo.html" class="active">'+
-					'<i class="lnr lnr-clock"></i> <span>Gestión del tiempo</span>'+
-				'</a>'+
-			'</li>'+
-			'<li>'+
-				'<a href="costes.html" class="active">'+
-					'<i class="lnr lnr-diamond"></i> <span>Gestión de costes</span>'+
-				'</a>'+
-			'</li>'+
-			'<li>'+
-				'<a href="riesgos.html" class="active">'+
-					'<i class="lnr lnr-warning"></i> <span>Gestión de riesgos</span>'+
-				'</a>'+
-			'</li>';
+var js = '<script src="assets/scripts/common.js"></script>';
 
-	$("#menu").html(menu);
+	$("body").append(js);
 
 

@@ -23,8 +23,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 
 	<!-- ICONS -->
-	<!-- <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png"> -->
+	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
 </head>
 
 <body>
@@ -34,7 +34,7 @@
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="brand">
-				<a href="index-2.html">
+				<a href="index.html">
 					<!-- <img src="assets/img/logo-dark.png" alt="Klorofil Logo" class="img-responsive logo"> -->
 					<x class="logo">GESPROTIC</x>
 				</a>
@@ -80,9 +80,6 @@
 								</li>
 							</ul>
 						</li>
-						<!-- <li>
-							<a class="update-pro" href="https://www.themeineed.com/downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>UPGRADE TO PRO</span></a>
-						</li> -->
 					</ul>
 				</div>
 			</div>
@@ -102,17 +99,23 @@
 						</li>
 						<li>
 							<a href="index-2.html" class="active">
-								<i class="lnr lnr-clock"></i> <span>Gestión del tiempo</span></a>
+								<i class="lnr lnr-clock"></i>
+								<span>Gestión del tiempo</span>
+							</a>
 							</a>
 						</li>
 						<li>
 							<a href="index-2.html" class="active">
-								<i class="lnr lnr-diamond"></i> <span>Gestión de costes</span></a>
+								<i class="lnr lnr-diamond"></i>
+								<span>Gestión de costes</span>
+							</a>
 							</a>
 						</li>
 						<li>
 							<a href="index-2.html" class="active">
-								<i class="lnr lnr-warning"></i> <span>Gestión de riesgos</span></a>
+								<i class="lnr lnr-warning"></i>
+								<span>Gestión de riesgos</span>
+							</a>
 							</a>
 						</li>
 					</ul>
@@ -129,35 +132,92 @@
 				<div class="container-fluid">
 					<!-- OVERVIEW -->
 					<div class="row">
+						<h4 class="titulo">
+							<strong>Gestión del Alcance</strong>
+						</h4>
 						<div class="card-header border-bottom-0 bg-transparent">
 							<ul class="nav nav-tabs justify-content-center pt-4" id="pills-tab" role="tablist">
 								<li class="nav-item active">
-									<a class="nav-link text-primary" id="pills-login-tab" data-toggle="pill" href="#pills-login" role="tab" aria-controls="pills-login"
+									<a class="nav-link text-primary" id="pills-def-tab" data-toggle="pill" href="#pills-def" role="tab" aria-controls="pill-def"
 									    aria-selected="true">
-										<i class="lnr lnr-chart-bars"></i> Gestión del Alcance</a>
+										<i class="lnr lnr-clock"></i> Definición del Alcance</a>
 								</li>
-
 								<li class="nav-item">
-									<a class="nav-link text-primary" id="pills-register-tab" data-toggle="pill" href="#pills-register" role="tab" aria-controls="pills-register"
+									<a class="nav-link text-primary" id="pills-req-tab" data-toggle="pill" href="#pills-req" role="tab" aria-controls="pills-login"
 									    aria-selected="false">
-										<i class="lnr lnr-clock"></i> Gestión del tiempo</a>
+										<i class="lnr lnr-list"></i> Gestión del Requisitos</a>
 								</li>
-								<li>
-									<a class="nav-link text-primary" id="time-tab" data-toggle="pill" href="#pills-time" role="tab" aria-controls="pills-time"
+								<li class="nav-item">
+									<a class="nav-link text-primary" id="pills-activity-tab" data-toggle="pill" href="#pills-activity" role="tab" aria-controls="pills-register"
 									    aria-selected="false">
-										<i class="lnr lnr-diamond"></i> Gestión de costes</a>
-								</li>
-								<li>
-									<a class="nav-link text-primary" id="risk-tab" data-toggle="pill" href="#pills-risk" role="tab" aria-controls="pills-risk"
-									    aria-selected="false">
-										<i class="lnr lnr-warning"></i> Gestión de riesgos</a>
+										<i class="lnr lnr-chart-bars"></i> Gestión del actividades</a>
 								</li>
 							</ul>
 						</div>
-
 						<div class="card-body">
 							<div class="tab-content" id="pills-tabContent">
-								<div class="tab-pane fade active in" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
+								<div class="tab-pane fade active in" id="pills-def" role="tabpanel" aria-labelledby="pills-def-tab">
+									<div class="col-sm-8">
+										<form action="">
+											<h4>
+												<strong>Descripción del alcance del proyecto
+													<span></span>
+												</strong>
+											</h4>
+											<textarea class="form-control" name="descripcion" id="descripcion" placeholder="Descripción del alcance" cols="30" rows="10"></textarea>
+											<br>
+											<form action="">
+												<h4>
+													<strong>Entregables del proyecto
+														<span></span>
+													</strong>
+												</h4>
+												<input type="text" class="form-control" name="nombre_entregable" placeholder="Nombre del entregable">
+												<br>
+												<input type="text" class="form-control" name="criterio_entregable" placeholder="Criterio de aceptación del entregable">
+												<br>
+												<button class="btn btn-primary btn-block" type="button">
+													<i class="fa fa-plus-square"> Agregar entregable</i>
+												</button>
+												<br>
+											</form>
+											<h4>
+												<strong>Lista de entregables del proyecto
+													<span></span>
+												</strong>
+											</h4>
+											<table class="table table-striped">
+												<thead>
+													<tr>
+														<td>Id</td>
+														<td>Nombre</td>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>1</td>
+														<td>Entregable 1</td>
+													</tr>
+												</tbody>
+											</table>
+											<h4 for="">
+												<strong>Requisitos excluidos del proyecto</strong>
+											</h4>
+											<label class="fancy-checkbox">
+												<input type="checkbox">
+												<span>Requisito 1</span>
+											</label>
+											<label class="fancy-checkbox">
+												<input type="checkbox">
+												<span>Requisito 2</span>
+											</label>
+											<br>
+											<textarea class="form-control" name="limitaciones" id="limitaciones" placeholder="Limitaciones del alcance del proyecto" cols="30" rows="10"></textarea>
+											<br>
+										</form>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="pills-req" role="tabpanel" aria-labelledby="pills-req-tab">
 									<div class="metric">
 										<span class="icon">
 											<i class="fa fa-download"></i>
@@ -168,16 +228,8 @@
 										</p>
 									</div>
 								</div>
-
-								<div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="pills-register-tab">
-									tab2
-								</div>
-								<div class="tab-pane fade" id="pills-time" role="tabpanel" aria-labelledby="pills-time">
-									tab3
-								</div>
-
-								<div class="tab-pane fade" id="pills-risk" role="tabpanel" aria-labelledby="pills-risk">
-									tab4
+								<div class="tab-pane fade" id="pills-activity" role="tabpanel" aria-labelledby="pills-activity-tab">
+									actividades tab
 								</div>
 							</div>
 						</div>
@@ -194,6 +246,9 @@
 			<div class="container-fluid">
 				<p class="copyright">&copy; 2018
 					<a href="#">Gesprotic</a>. All Rights Reserved.</p>
+				<a href="https://unicartagena.edu.co">
+					<img id="university" class="img-responsive" src="assets/img/logotipo-oficial-unicartagena.png" alt="">
+				</a>
 			</div>
 		</footer>
 	</div>
