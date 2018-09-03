@@ -34,7 +34,7 @@ $("#menu").html(menu);
 let footer = '<div class="container-fluid">'+
 				'<p class="copyright">&copy; 2018'+
 					'<a href="#">Gesprotic</a>. All Rights Reserved.</p>'+
-				'<a href="https://unicartagena.edu.co">'+
+				'<a href="https://www.unicartagena.edu.co" target="_blank">'+
 					'<img id="university" class="img-responsive" src="assets/img/logotipo-oficial-unicartagena.png" alt="">'+
 				'</a>'+
             '</div>';

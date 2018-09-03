@@ -138,25 +138,68 @@
 						<div class="card-header border-bottom-0 bg-transparent">
 							<ul class="nav nav-tabs justify-content-center pt-4" id="pills-tab" role="tablist">
 								<li class="nav-item active">
-									<a class="nav-link text-primary" id="pills-def-tab" data-toggle="pill" href="#pills-def" role="tab" aria-controls="pill-def"
-									    aria-selected="true">
-										<i class="lnr lnr-clock"></i> Definición del Alcance</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link text-primary" id="pills-req-tab" data-toggle="pill" href="#pills-req" role="tab" aria-controls="pills-login"
-									    aria-selected="false">
+									<a class="nav-link text-primary" id="pills-req-tab" data-toggle="pill" href="#pills-req" role="tab"
+									    aria-controls="pills-login" aria-selected="false">
 										<i class="lnr lnr-list"></i> Gestión del Requisitos</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link text-primary" id="pills-activity-tab" data-toggle="pill" href="#pills-activity" role="tab" aria-controls="pills-register"
-									    aria-selected="false">
+									<a class="nav-link text-primary" id="pills-def-tab" data-toggle="pill" href="#pills-def" role="tab"
+									    aria-controls="pill-def" aria-selected="true">
+										<i class="lnr lnr-clock"></i> Definición del Alcance</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link text-primary" id="pills-activity-tab" data-toggle="pill" href="#pills-activity" role="tab"
+									    aria-controls="pills-register" aria-selected="false">
 										<i class="lnr lnr-chart-bars"></i> Gestión del actividades</a>
 								</li>
 							</ul>
 						</div>
 						<div class="card-body">
 							<div class="tab-content" id="pills-tabContent">
-								<div class="tab-pane fade active in" id="pills-def" role="tabpanel" aria-labelledby="pills-def-tab">
+								<div class="tab-pane fade active in" id="pills-req" role="tabpanel" aria-labelledby="pills-req-tab">
+									<div class="col-sm-8">
+										<form action="">
+											<h4>
+												<strong>Nombre del Requisito
+													<span></span>
+												</strong>
+											</h4>
+											<input type="text" class="form-control" name="nombre_req" id="nombre_req" placeholder="Nombre del Requisito">
+											<br>
+											<h4>
+												<strong>Descripción del Requisito
+													<span></span>
+												</strong>
+											</h4>
+											<textarea class="form-control" name="descripcion_req" id="descripcion_req" placeholder="Descripción del Requisito"></textarea>
+											<br>
+											<h4>
+												<strong>Criterio de aceptación</strong>
+											</h4>
+											<input type="text" class="form-control" name="criterio_acept_req" id="criterio_acept_req" placeholder="Criterio de aceptación">
+											<br>
+											<h4>
+												<strong>Metrica de aceptación</strong>
+											</h4>
+											<input type="text" class="form-control" name="metrica_acept_req" id="metrica_acept_req" placeholder="Metrica de aceptación">
+											<br>
+											<h4>
+												<strong>Prioridad del Requisito</strong>
+											</h4>
+											<select class="form-control" name="prioridad_req" id="prioridad_req">
+												<option value="" disabled>Seleccione una opción</option>
+												<option value="Baja">Baja</option>
+												<option value="Media">Media</option>
+												<option value="Alta">Alta</option>
+											</select>
+											<br>
+											<button class="btn btn-primary btn-block" type="button">
+												<i class="fa fa-save"> Guardar requisito</i>
+											</button>
+										</form>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="pills-def" role="tabpanel" aria-labelledby="pills-def-tab">
 									<div class="col-sm-8">
 										<form action="">
 											<h4>
@@ -164,7 +207,8 @@
 													<span></span>
 												</strong>
 											</h4>
-											<textarea class="form-control" name="descripcion" id="descripcion" placeholder="Descripción del alcance" cols="30" rows="10"></textarea>
+											<textarea class="form-control" name="descripcion" id="descripcion" placeholder="Descripción del alcance"
+											    cols="30" rows="10"></textarea>
 											<br>
 											<form action="">
 												<h4>
@@ -212,23 +256,13 @@
 												<span>Requisito 2</span>
 											</label>
 											<br>
-											<textarea class="form-control" name="limitaciones" id="limitaciones" placeholder="Limitaciones del alcance del proyecto" cols="30" rows="10"></textarea>
+											<textarea class="form-control" name="limitaciones" id="limitaciones" placeholder="Limitaciones del alcance del proyecto"
+											    cols="30" rows="10"></textarea>
 											<br>
 											<button class="btn btn-primary btn-block" type="button">
 												<i class="fa fa-save"> Guardar alcance</i>
 											</button>
 										</form>
-									</div>
-								</div>
-								<div class="tab-pane fade" id="pills-req" role="tabpanel" aria-labelledby="pills-req-tab">
-									<div class="metric">
-										<span class="icon">
-											<i class="fa fa-download"></i>
-										</span>
-										<p>
-											<span class="number">1,252</span>
-											<span class="title">Downloads</span>
-										</p>
 									</div>
 								</div>
 								<div class="tab-pane fade" id="pills-activity" role="tabpanel" aria-labelledby="pills-activity-tab">
