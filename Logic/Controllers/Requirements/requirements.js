@@ -1,5 +1,4 @@
-function sendRequirement(e) {
-    e.preventDefault();
+function sendRequirement() {
 
     var nombre_req = $("#nombre_req").val();
     var criterio_acept_req = $("#criterio_acept_req").val();
@@ -9,7 +8,7 @@ function sendRequirement(e) {
 
     $.ajax({
         url: "Logic/Scripts/addRequirement.php",
-        type: "GET",
+        type: "POST",
         data: {
         nombre_req: nombre_req,
         criterio_acept_req: criterio_acept_req,
