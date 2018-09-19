@@ -18,4 +18,5 @@ if (isset($nombre_req)) {
 
     mysqli_query($conection, $query);
 
+    echo "do_it";
 }

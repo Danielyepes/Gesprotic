@@ -2657,4 +2657,7 @@ ul.activity-timeline > li:last-child:after {
   font-weight: bold;
 }
 
+.btn{
+  padding: 6px 9px;
+}
 /*# sourceMappingURL=main.css.map */

@@ -27,7 +27,7 @@
 	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
 </head>
 
-<body>
+<body onload="requirementList()">
 	<!-- WRAPPER -->
 	<div id="wrapper">
 
@@ -221,20 +221,15 @@
 									<div class="col-md-8">
 										<table class="table table-striped">
 											<thead>
-												<th>
-													<tr>
-														<td>opcion x</td>
-														<td>opcion x</td>
-														<td>opcion x</td>
-													</tr>
-												</th>
-											</thead>
-											<tbody>
 												<tr>
-													<td></td>
-													<td></td>
-													<td></td>
+													<th>Nombre</th>
+													<th>Criterio de aceptación</th>
+													<th>Metríca</th>
+													<th>Prioridad</th>
+													<th>Operaciones</th>
 												</tr>
+											</thead>
+											<tbody id="requirements">
 											</tbody>
 										</table>
 									</div>
