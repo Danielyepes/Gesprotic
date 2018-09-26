@@ -4,7 +4,10 @@ include "../php/conect.php";
 
 $link = Conection();
 $array = array();
-$sql = "SELECT * FROM requisito";
+
+$id = $_POST["id"];
+
+$sql = "SELECT * FROM requisito  WHERE id = $id";
 $result = mysqli_query($link, $sql) or die(mysqli_error($link));
 while ($field = mysqli_fetch_array($result)) {
     $id = $field["id"];
@@ -19,7 +22,7 @@ while ($field = mysqli_fetch_array($result)) {
         'criterio_aceptacion' => $criterio_aceptacion,
         'descripcion' => $descripcion,
         'metrica' => $metrica,
-        'prioridad' => $prioridad
+        'prioridad' => $prioridad,
     );
 }
 $json_string = json_encode($array, JSON_UNESCAPED_UNICODE);
