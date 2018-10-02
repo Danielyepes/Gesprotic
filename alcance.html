@@ -159,10 +159,10 @@
 								<div class="tab-pane fade active in" id="pills-req" role="tabpanel" aria-labelledby="pills-req-tab">
 									<div class="card-header border-bottom-0 bg-transparent">
 										<ul class="nav nav-tabs justify-content-center pt-4" id="pills-tab" role="tablist">
-											<li class="nav-item">
+											<li class="nav-item active">
 												<a class="nav-link text-primary" id="req-details-tab" data-toggle="pill" href="#req-details" role="tab"
 												 aria-controls="pill-def" aria-selected="true">
-													<i class="fa fa-arrows"></i> Agregar requisito</a>
+													<i class="fa fa-arrows"></i>Requisito</a>
 											</li>
 											<li class="nav-item">
 												<a class="nav-link text-primary" id="pills-activity-tab" data-toggle="pill" href="#pills-activity" role="tab"
@@ -173,7 +173,7 @@
 									</div>
 									<div class="card-body">
 										<div class="tab-content" id="pills-tabContent">
-											<div class="tab-pane fade " id="req-details" role="tabpanel" aria-labelledby="req-details-tab">
+											<div class="tab-pane fade active in" id="req-details" role="tabpanel" aria-labelledby="req-details-tab">
 												<div class="col-sm-8">
 													<form class="validate-form" method="POST">
 														<h4>
@@ -189,32 +189,35 @@
 																<span></span>
 															</strong>
 														</h4>
-														<textarea class="form-control" name="descripcion_req" id="descripcion_req" placeholder="Descripción del Requisito"></textarea required>
-											<br/>
-											<h4>
-												<strong>Criterio de aceptación</strong>
-											</h4>
-											<input type="text" class="form-control" name="criterio_acept_req" id="criterio_acept_req" placeholder="Criterio de aceptación" required>
-											<br>
-											<h4>
-												<strong>Metrica de aceptación</strong>
-											</h4>
-											<input type="text" class="form-control" name="metrica_acept_req" id="metrica_acept_req" placeholder="Metrica de aceptación" required>
-											<br>
-											<h4>
-												<strong>Prioridad del Requisito</strong>
-											</h4>
-											<select class="form-control" name="prioridad_req" id="prioridad_req" required>
-												<option value="" disabled>Seleccione una opción</option>
-												<option value="Baja">Baja</option>
-												<option value="Media">Media</option>
-												<option value="Alta">Alta</option>
-											</select>
-											<br>
-											<button class="btn btn-primary btn-block" type="submit" onsubmit="sendRequirement(e)">
-												<i class="fa fa-save"> Guardar requisito</i>
-											</button>
-										</form>
+														<textarea class="form-control" name="descripcion_req" id="descripcion_req" placeholder="Descripción del Requisito"
+														 required></textarea>
+														<br />
+														<h4>
+															<strong>Criterio de aceptación</strong>
+														</h4>
+														<input type="text" class="form-control" name="criterio_acept_req" id="criterio_acept_req" placeholder="Criterio de aceptación"
+														 required>
+														<br>
+														<h4>
+															<strong>Metrica de aceptación</strong>
+														</h4>
+														<input type="text" class="form-control" name="metrica_acept_req" id="metrica_acept_req" placeholder="Metrica de aceptación"
+														 required>
+														<br>
+														<h4>
+															<strong>Prioridad del Requisito</strong>
+														</h4>
+														<select class="form-control" name="prioridad_req" id="prioridad_req" required>
+															<option value="" disabled>Seleccione una opción</option>
+															<option value="Baja">Baja</option>
+															<option value="Media">Media</option>
+															<option value="Alta">Alta</option>
+														</select>
+														<br>
+														<button class="btn btn-primary btn-block" type="submit" onsubmit="sendRequirement(e)">
+															<i class="fa fa-save"> Guardar requisito</i>
+														</button>
+													</form>
 												</div>
 											</div>
 											<div class="tab-pane fade" id="pills-activity" role="tabpanel" aria-labelledby="pills-activity-tab">
@@ -246,103 +249,126 @@
 												</strong>
 											</h4>
 											<textarea class="form-control" name="descripcion" id="descripcion" placeholder="Descripción del alcance"
-											    cols="30" rows="10"></textarea>
-														<br>
-														<form action="">
-															<h4>
-																<strong>Entregables del proyecto
-																	<span></span>
-																</strong>
-															</h4>
-															<input type="text" class="form-control" name="nombre_entregable" placeholder="Nombre del entregable">
-															<br>
-															<input type="text" class="form-control" name="criterio_entregable" placeholder="Criterio de aceptación del entregable">
-															<br>
-															<button class="btn btn-primary btn-block" type="button">
-																<i class="fa fa-plus-square"> Agregar entregable</i>
-															</button>
-															<br>
-														</form>
-														<h4>
-															<strong>Lista de entregables del proyecto
-																<span></span>
-															</strong>
-														</h4>
-														<table class="table table-striped">
-															<thead>
-																<tr>
-																	<td>Id</td>
-																	<td>Nombre</td>
-																</tr>
-															</thead>
-															<tbody>
-																<tr>
-																	<td>1</td>
-																	<td>Entregable 1</td>
-																</tr>
-															</tbody>
-														</table>
-														<h4 for="">
-															<strong>Requisitos excluidos del proyecto</strong>
-														</h4>
-														<label class="fancy-checkbox">
-															<input type="checkbox">
-															<span>Requisito 1</span>
-														</label>
-														<label class="fancy-checkbox">
-															<input type="checkbox">
-															<span>Requisito 2</span>
-														</label>
-														<br>
-														<textarea class="form-control" name="limitaciones" id="limitaciones" placeholder="Limitaciones del alcance del proyecto"
-														 cols="30" rows="10"></textarea>
-														<br>
-														<button class="btn btn-primary btn-block" type="button">
-															<i class="fa fa-save"> Guardar alcance</i>
-														</button>
-													</form>
-												</div>
-											</div>
-											<div class="tab-pane fade" id="pills-activity" role="tabpanel" aria-labelledby="pills-activity-tab">
-												actividades tab
-											</div>
-										</div>
+											 cols="30" rows="10"></textarea>
+											<br>
+											<form action="">
+												<h4>
+													<strong>Entregables del proyecto
+														<span></span>
+													</strong>
+												</h4>
+												<input type="text" class="form-control" name="nombre_entregable" placeholder="Nombre del entregable">
+												<br>
+												<input type="text" class="form-control" name="criterio_entregable" placeholder="Criterio de aceptación del entregable">
+												<br>
+												<button class="btn btn-primary btn-block" type="button">
+													<i class="fa fa-plus-square"> Agregar entregable</i>
+												</button>
+												<br>
+											</form>
+											<h4>
+												<strong>Lista de entregables del proyecto
+													<span></span>
+												</strong>
+											</h4>
+											<table class="table table-striped">
+												<thead>
+													<tr>
+														<td>Id</td>
+														<td>Nombre</td>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>1</td>
+														<td>Entregable 1</td>
+													</tr>
+												</tbody>
+											</table>
+											<h4 for="">
+												<strong>Requisitos excluidos del proyecto</strong>
+											</h4>
+											<label class="fancy-checkbox">
+												<input type="checkbox">
+												<span>Requisito 1</span>
+											</label>
+											<label class="fancy-checkbox">
+												<input type="checkbox">
+												<span>Requisito 2</span>
+											</label>
+											<br>
+											<textarea class="form-control" name="limitaciones" id="limitaciones" placeholder="Limitaciones del alcance del proyecto"
+											 cols="30" rows="10"></textarea>
+											<br>
+											<button class="btn btn-primary btn-block" type="button">
+												<i class="fa fa-save"> Guardar alcance</i>
+											</button>
+										</form>
 									</div>
 								</div>
-
+								<div class="tab-pane fade" id="pills-activity" role="tabpanel" aria-labelledby="pills-activity-tab">
+									actividades tab
+								</div>
 							</div>
 						</div>
-						<!-- END MAIN CONTENT -->
 					</div>
-					<!-- END MAIN -->
 
-					<div class="clearfix"></div>
-					<footer>
-						<div class="container-fluid">
-							<p class="copyright">&copy; 2018
-								<a href="#">Gesprotic</a>. All Rights Reserved.</p>
-							<a href="https://unicartagena.edu.co">
-								<img id="university" class="img-responsive" src="assets/img/logotipo-oficial-unicartagena.png" alt="">
-							</a>
-						</div>
-					</footer>
 				</div>
-				<!-- END WRAPPER -->
+			</div>
+			<!-- END MAIN CONTENT -->
+		</div>
+		<!-- END MAIN -->
 
-				<!-- Javascript -->
-				<script src="assets/vendor/jquery/jquery.min.js"></script>
-				<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-				<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-				<script src="assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-				<script src="assets/vendor/chartist/js/chartist.min.js"></script>
-				<script src="assets/scripts/klorofil-common.js"></script>
-				<script src="Logic/Controllers/Requirements/requirements.js"></script>
-				<script type="text/javascript">
-					$(".validate-form").submit(function (e) {
-						sendRequirement();
-						return false;
-					});
-				</script>
+		<div class="clearfix"></div>
+		<footer>
+			<div class="container-fluid">
+				<p class="copyright">&copy; 2018
+					<a href="#">Gesprotic</a>. All Rights Reserved.</p>
+				<a href="https://unicartagena.edu.co">
+					<img id="university" class="img-responsive" src="assets/img/logotipo-oficial-unicartagena.png" alt="">
+				</a>
+			</div>
+		</footer>
+	</div>
+	<!-- END WRAPPER -->
+	<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Confirmar Eliminado</h4>
+				</div>
+
+				<div class="modal-body">
+					<p>¿Usted esta seguro que desea eliminar el requisito?</p>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					<a class="btn btn-danger btn-ok">Eliminar</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Javascript -->
+	<script src="assets/vendor/jquery/jquery.min.js"></script>
+	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+	<script src="assets/vendor/chartist/js/chartist.min.js"></script>
+	<script src="assets/scripts/klorofil-common.js"></script>
+	<script src="Logic/Controllers/Requirements/requirements.js"></script>
+	<script type="text/javascript">
+		$(".validate-form").submit(function (e) {
+			sendRequirement();
+			return false;
+		});
+		$('#confirm-delete').on('show.bs.modal', function (e) {
+			$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+//			$('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
+		});
+	</script>
 
 </body>
 

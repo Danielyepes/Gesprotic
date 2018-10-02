@@ -8,7 +8,7 @@ foreach ($_POST as $key => $clave) {
 }
 
 $conection = Conection();
-if (isset($nombre_req)) {
+
     $query = "INSERT INTO `requisito`(`nombre`, `criterio_aceptacion`, `descripcion`, `metrica`, `prioridad`)
         VALUES ('$nombre_req',
         '$criterio_acept_req',
@@ -19,4 +19,3 @@ if (isset($nombre_req)) {
     mysqli_query($conection, $query);
 
     echo "do_it";
-}

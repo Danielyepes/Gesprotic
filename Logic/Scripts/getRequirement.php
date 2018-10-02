@@ -10,14 +10,12 @@ $id = $_POST["id"];
 $sql = "SELECT * FROM requisito  WHERE id = $id";
 $result = mysqli_query($link, $sql) or die(mysqli_error($link));
 while ($field = mysqli_fetch_array($result)) {
-    $id = $field["id"];
     $nombre = $field["nombre"];
     $criterio_aceptacion = $field["criterio_aceptacion"];
     $descripcion = $field["descripcion"];
     $metrica = $field["metrica"];
     $prioridad = $field["prioridad"];
     $array[] = array(
-        'id' => $id,
         'nombre' => $nombre,
         'criterio_aceptacion' => $criterio_aceptacion,
         'descripcion' => $descripcion,
