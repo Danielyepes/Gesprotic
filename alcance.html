@@ -13,6 +13,8 @@
 	<link rel="stylesheet" href="assets/vendor/linearicons/style.css">
 	<link rel="stylesheet" href="assets/vendor/chartist/css/chartist-custom.css">
 
+	<link rel="stylesheet" href="assets/css/fastselect.min.css">
+
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="assets/css/main.css">
 
@@ -288,14 +290,8 @@
 											<h4 for="">
 												<strong>Requisitos excluidos del proyecto</strong>
 											</h4>
-											<label class="fancy-checkbox">
-												<input type="checkbox">
-												<span>Requisito 1</span>
-											</label>
-											<label class="fancy-checkbox">
-												<input type="checkbox">
-												<span>Requisito 2</span>
-											</label>
+											<select class="multipleSelect form-control" name="requirementSelect" id="requirementSelect" searchable="Search here.."
+											 multiple></select>
 											<br>
 											<textarea class="form-control" name="limitaciones" id="limitaciones" placeholder="Limitaciones del alcance del proyecto"
 											 cols="30" rows="10"></textarea>
@@ -359,14 +355,22 @@
 	<script src="assets/vendor/chartist/js/chartist.min.js"></script>
 	<script src="assets/scripts/klorofil-common.js"></script>
 	<script src="Logic/Controllers/Requirements/requirements.js"></script>
+	<script src="assets/scripts/fastsearch.js"></script>
 	<script type="text/javascript">
+		$('.multipleSelect').fastselect({
+			placeholder: 'Seleccione los requisitos a excluir',
+			searchPlaceholder: 'Buscar requisitos',
+			noResultsText: 'No se han encontrado requisitos',
+			userOptionPrefix: 'Add '
+		});
+
 		$(".validate-form").submit(function (e) {
 			sendRequirement();
 			return false;
 		});
 		$('#confirm-delete').on('show.bs.modal', function (e) {
 			$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-//			$('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
+			//			$('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
 		});
 	</script>
 

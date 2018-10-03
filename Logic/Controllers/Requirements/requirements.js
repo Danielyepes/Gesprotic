@@ -51,6 +51,7 @@ function requirementList() {
         dataType: "json",
         success: function (data) {
             var response = "";
+            var options = "";
 
             for (var i in data) {
                 response +=
@@ -73,11 +74,12 @@ function requirementList() {
                     ' <button class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete" data-href="Logic/Scripts/deleteRequirement.php?id='+data[i].id+'"><i class="fa fa-close"></i></button>' +
                     "</td>" +
                     "</tr>";
+                    options += '<option value="'+data[i].id+'">'+data[i].nombre+'</option>';
             }
             if (response == "") {
-                response =
-                    '<tr><td colspan="5"><strong>No hay requisitos agregados</strong></td></tr>';
+                response = '<tr><td colspan="5"><strong>No hay requisitos agregados</strong></td></tr>';
             }
+            $("#requirementSelect").html(options);
             $("#requirements").html(response);
         }
     });
