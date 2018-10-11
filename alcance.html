@@ -244,7 +244,7 @@
 								</div>
 								<div class="tab-pane fade" id="pills-def" role="tabpanel" aria-labelledby="pills-def-tab">
 									<div class="col-sm-8">
-										<form action="">
+										<form action="" id="reach_form">
 											<h4>
 												<strong>Descripción del alcance del proyecto
 													<span></span>
@@ -253,21 +253,40 @@
 											<textarea class="form-control" name="descripcion" id="descripcion" placeholder="Descripción del alcance"
 											 cols="30" rows="10"></textarea>
 											<br>
-											<form action="">
-												<h4>
-													<strong>Entregables del proyecto
-														<span></span>
-													</strong>
-												</h4>
-												<input type="text" class="form-control" name="nombre_entregable" placeholder="Nombre del entregable">
-												<br>
-												<input type="text" class="form-control" name="criterio_entregable" placeholder="Criterio de aceptación del entregable">
-												<br>
-												<button class="btn btn-primary btn-block" type="button">
-													<i class="fa fa-plus-square"> Agregar entregable</i>
-												</button>
-												<br>
-											</form>
+											<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalenregable">Entregable</button>
+											<!-- modal entregable -->
+											<div class="modal fade" id="modalenregable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+												<div class="modal-dialog" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+															<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+														</div>
+														<div class="modal-body">
+															<form action="">
+																<h4>
+																	<strong>Entregables del proyecto
+																		<span></span>
+																	</strong>
+																</h4>
+																<input type="text" class="form-control" name="nombre_entregable" placeholder="Nombre del entregable">
+																<br>
+																<input type="text" class="form-control" name="criterio_entregable" placeholder="Criterio de aceptación del entregable">
+																<br>
+																
+																<br>
+															</form>
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+															<button class="btn btn-primary btn-ok" type="button">
+																<i class="fa fa-plus-square"> Agregar entregable</i>
+															</button>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- Fin modal entregable -->
 											<h4>
 												<strong>Lista de entregables del proyecto
 													<span></span>
@@ -316,6 +335,10 @@
 		<!-- END MAIN -->
 
 		<div class="clearfix"></div>
+		<div id="diagramContainer">
+			<div id="item_left" class="item"></div>
+			<div id="item_right" class="item" style="margin-left:50px;"></div>
+		</div>
 		<footer>
 			<div class="container-fluid">
 				<p class="copyright">&copy; 2018
@@ -355,6 +378,7 @@
 	<script src="assets/vendor/chartist/js/chartist.min.js"></script>
 	<script src="assets/scripts/klorofil-common.js"></script>
 	<script src="Logic/Controllers/Requirements/requirements.js"></script>
+	<script src="Logic/Controllers/Deliverable/deliverable.js"></script>
 	<script src="assets/scripts/fastsearch.js"></script>
 	<script type="text/javascript">
 		$('.multipleSelect').fastselect({
@@ -368,6 +392,9 @@
 			sendRequirement();
 			return false;
 		});
+		$("#reach_form").submit(function (e) {
+				return false;
+			});
 		$('#confirm-delete').on('show.bs.modal', function (e) {
 			$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
 			//			$('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
