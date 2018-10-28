@@ -21,9 +21,6 @@
 	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
 	<link rel="stylesheet" href="assets/css/demo.css">
 
-	<!-- GOOGLE FONTS -->
-	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
-
 	<!-- ICONS -->
 	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
@@ -93,28 +90,28 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav" id="menu">
-						<li>
-							<a href="index-2.html" class="active">
+						<li class="active">
+							<a href="alcance.html">
 								<i class="lnr lnr-chart-bars"></i>
 								<span>Gestión del Alcance</span>
 							</a>
 						</li>
 						<li>
-							<a href="index-2.html" class="active">
+							<a href="index-2.html">
 								<i class="lnr lnr-clock"></i>
 								<span>Gestión del tiempo</span>
 							</a>
 							</a>
 						</li>
 						<li>
-							<a href="index-2.html" class="active">
+							<a href="index-2.html">
 								<i class="lnr lnr-diamond"></i>
 								<span>Gestión de costes</span>
 							</a>
 							</a>
 						</li>
 						<li>
-							<a href="index-2.html" class="active">
+							<a href="index-2.html">
 								<i class="lnr lnr-warning"></i>
 								<span>Gestión de riesgos</span>
 							</a>
@@ -167,7 +164,7 @@
 													<i class="fa fa-arrows"></i>Requisito</a>
 											</li>
 											<li class="nav-item">
-												<a class="nav-link text-primary" id="pills-activity-tab" data-toggle="pill" href="#pills-activity" role="tab"
+												<a class="nav-link text-primary" id="pills-requirements-tab" data-toggle="pill" href="#pills-requirements" role="tab"
 												 aria-controls="pills-register" aria-selected="false">
 													<i class="lnr lnr-chart-bars"></i> Gestión de Requisitos </a>
 											</li>
@@ -222,7 +219,7 @@
 													</form>
 												</div>
 											</div>
-											<div class="tab-pane fade" id="pills-activity" role="tabpanel" aria-labelledby="pills-activity-tab">
+											<div class="tab-pane fade" id="pills-requirements" role="tabpanel" aria-labelledby="pills-requirements-tab">
 												<div class="col-md-8">
 													<table class="table table-striped">
 														<thead>
@@ -244,44 +241,36 @@
 								</div>
 								<div class="tab-pane fade" id="pills-def" role="tabpanel" aria-labelledby="pills-def-tab">
 									<div class="col-sm-8">
-										<form action="" id="reach_form">
+										<form action="" id="scope_form">
 											<h4>
 												<strong>Descripción del alcance del proyecto
 													<span></span>
 												</strong>
 											</h4>
-											<textarea class="form-control" name="descripcion" id="descripcion" placeholder="Descripción del alcance"
-											 cols="30" rows="10"></textarea>
+											<textarea class="form-control" name="descripcion_alcance" id="descripcion_alcance" placeholder="Descripción del alcance"
+											 cols="30" rows="10" required></textarea>
 											<br>
-											<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalenregable">Entregable</button>
+											<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalentregable">Agregar Entregables</button>
 											<!-- modal entregable -->
-											<div class="modal fade" id="modalenregable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+											<div class="modal fade" id="modalentregable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 												<div class="modal-dialog" role="document">
 													<div class="modal-content">
 														<div class="modal-header">
 															<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-															<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+															<h4 class="modal-title" id="myModalLabel">Entregables del proyecto</h4>
 														</div>
 														<div class="modal-body">
-															<form action="">
-																<h4>
-																	<strong>Entregables del proyecto
-																		<span></span>
-																	</strong>
-																</h4>
-																<input type="text" class="form-control" name="nombre_entregable" placeholder="Nombre del entregable">
-																<br>
-																<input type="text" class="form-control" name="criterio_entregable" placeholder="Criterio de aceptación del entregable">
-																<br>
-																
-																<br>
-															</form>
+															<input type="text" class="form-control" id="nombre_entregable" placeholder="Nombre del entregable">
+															<br>
+															<textarea type="text" class="form-control" id="criterio_entregable" placeholder="Criterio de aceptación del entregable"></textarea>
+															<br>
+															<button class="btn btn-primary btn-ok" type="submit" onclick="sendDeliverable();" data-dismiss="modal">
+																<i class="fa fa-plus-square"> Agregar entregable</i>
+															</button>
+															<br>
 														</div>
 														<div class="modal-footer">
 															<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-															<button class="btn btn-primary btn-ok" type="button">
-																<i class="fa fa-plus-square"> Agregar entregable</i>
-															</button>
 														</div>
 													</div>
 												</div>
@@ -291,31 +280,31 @@
 												<strong>Lista de entregables del proyecto
 													<span></span>
 												</strong>
-											</h4>
+												</h4>
 											<table class="table table-striped">
 												<thead>
 													<tr>
-														<td>Id</td>
 														<td>Nombre</td>
+													<td>Estado</td>
+														<td>Operaciones</td>
 													</tr>
 												</thead>
-												<tbody>
-													<tr>
-														<td>1</td>
-														<td>Entregable 1</td>
-													</tr>
+												<tbody id="entregable_list">
 												</tbody>
 											</table>
 											<h4 for="">
 												<strong>Requisitos excluidos del proyecto</strong>
 											</h4>
 											<select class="multipleSelect form-control" name="requirementSelect" id="requirementSelect" searchable="Search here.."
-											 multiple></select>
+											 multiple required></select>
 											<br>
 											<textarea class="form-control" name="limitaciones" id="limitaciones" placeholder="Limitaciones del alcance del proyecto"
-											 cols="30" rows="10"></textarea>
+											 cols="30" rows="10" required></textarea>
 											<br>
-											<button class="btn btn-primary btn-block" type="button">
+											<textarea class="form-control" name="hipotesis" id="hipotesis" placeholder="Hipotesis del alcance del proyecto"
+											 cols="30" rows="10" required></textarea>
+											<br>
+											<button class="btn btn-primary btn-block" type="submit">
 												<i class="fa fa-save"> Guardar alcance</i>
 											</button>
 										</form>
@@ -343,9 +332,6 @@
 			<div class="container-fluid">
 				<p class="copyright">&copy; 2018
 					<a href="#">Gesprotic</a>. All Rights Reserved.</p>
-				<a href="https://unicartagena.edu.co">
-					<img id="university" class="img-responsive" src="assets/img/logotipo-oficial-unicartagena.png" alt="">
-				</a>
 			</div>
 		</footer>
 	</div>
@@ -353,16 +339,13 @@
 	<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
-
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					<h4 class="modal-title" id="myModalLabel">Confirmar Eliminado</h4>
 				</div>
-
 				<div class="modal-body">
 					<p>¿Usted esta seguro que desea eliminar el requisito?</p>
 				</div>
-
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 					<a class="btn btn-danger btn-ok">Eliminar</a>
@@ -379,6 +362,7 @@
 	<script src="assets/scripts/klorofil-common.js"></script>
 	<script src="Logic/Controllers/Requirements/requirements.js"></script>
 	<script src="Logic/Controllers/Deliverable/deliverable.js"></script>
+	<script src="Logic/Controllers/Reach/reach.js"></script>
 	<script src="assets/scripts/fastsearch.js"></script>
 	<script type="text/javascript">
 		$('.multipleSelect').fastselect({
@@ -387,14 +371,14 @@
 			noResultsText: 'No se han encontrado requisitos',
 			userOptionPrefix: 'Add '
 		});
-
 		$(".validate-form").submit(function (e) {
 			sendRequirement();
 			return false;
 		});
-		$("#reach_form").submit(function (e) {
-				return false;
-			});
+		$("#scope_form").submit(function (e) {
+			sendReach();
+			return false;
+		});
 		$('#confirm-delete').on('show.bs.modal', function (e) {
 			$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
 			//			$('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
@@ -402,7 +386,5 @@
 	</script>
 
 </body>
-
-<!-- Mirrored from demo.thedevelovers.com/dashboard/klorofil-v2.0/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 29 Jul 2018 03:56:14 GMT -->
 
 </html>

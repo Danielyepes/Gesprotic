@@ -2679,6 +2679,10 @@ ul.activity-timeline>li:last-child:after {
   padding: 6px 9px;
 }
 
+thead{
+  font-weight: bold;
+}
+
 /*
 select multiple
 */

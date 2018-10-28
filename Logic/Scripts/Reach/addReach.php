@@ -9,10 +9,11 @@ foreach ($_POST as $key => $clave) {
 
 $conection = Conection();
 
-$query = "INSERT INTO `entregable`( `nombre`, `criterio_aceptacion`, `estado`)
-        VALUES ('$nombre_entregable',
-        '$criterio_entregable',
-        'En_proceso')";
+$query = "INSERT INTO `alcance`(`descripcion`, `edt`, `limitaciones`, `hipotesis`)
+        VALUES ('$descripcion_alcance',
+        '',
+        '$limitaciones',
+        '$hipotesis')";
 
 mysqli_query($conection, $query);
 
