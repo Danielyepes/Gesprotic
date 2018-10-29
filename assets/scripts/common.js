@@ -13,36 +13,36 @@ var menu = '<li>' +
     '</a>' +
     '</li>' +
     '<li>';
-if (window.location.pathname.endsWith("ce.php"))
-    menu += '<a href="alcance.php" class="active">';
+if (window.location.pathname.endsWith("ce.html"))
+    menu += '<a href="alcance.html" class="active">';
 else
-    menu += '<a href="alcance.php">';
+    menu += '<a href="alcance.html">';
 
 menu += '<i class="lnr lnr-chart-bars"></i>' +
     '<span>Gestión del Alcance</span>' +
     '</a>' +
     '</li>' +
     '<li>';
-if (window.location.pathname.endsWith("po.php"))
-    menu += '<a href="tiempo.php" class="active">';
+if (window.location.pathname.endsWith("po.html"))
+    menu += '<a href="tiempo.html" class="active">';
 else
-    menu += '<a href="tiempo.php">';
+    menu += '<a href="tiempo.html">';
 
 menu += '<i class="lnr lnr-clock"></i> <span>Gestión del tiempo</span>' +
     '</a>' +
     '</li>' +'<li>';
-if (window.location.pathname.endsWith("es.php"))
-    menu += '<a href="costes.php" class="active">';
+if (window.location.pathname.endsWith("es.html"))
+    menu += '<a href="costes.html" class="active">';
 else
-    menu += '<a href="costes.php">';
+    menu += '<a href="costes.html">';
 menu += '<i class="lnr lnr-diamond"></i> <span>Gestión de costes</span>' +
     '</a>' +
     '</li>' +
     '<li>';
 if (window.location.pathname.endsWith("os.php"))
-    menu += '<a href="riesgos.php" class="active">';
+    menu += '<a href="riesgos.html" class="active">';
 else
-    menu += '<a href="riesgos.php">';
+    menu += '<a href="riesgos.html">';
 menu += '<i class="lnr lnr-warning"></i> <span>Gestión de riesgos</span>' +
     '</a>' +
     '</li>';
