@@ -169,8 +169,8 @@
 													<i class="fa fa-arrows"></i>Requisito</a>
 											</li>
 											<li class="nav-item">
-												<a class="nav-link text-primary" id="pills-requirements-tab" data-toggle="pill" href="#pills-requirements" role="tab"
-												 aria-controls="pills-register" aria-selected="false">
+												<a class="nav-link text-primary" id="pills-requirements-tab" data-toggle="pill" href="#pills-requirements"
+												 role="tab" aria-controls="pills-register" aria-selected="false">
 													<i class="lnr lnr-chart-bars"></i> Gestión de Requisitos </a>
 											</li>
 										</ul>
@@ -246,7 +246,7 @@
 								</div>
 								<div class="tab-pane fade" id="pills-def" role="tabpanel" aria-labelledby="pills-def-tab">
 									<div class="col-sm-8">
-										<form action="" id="scope_form">
+										<form action="" method="POST" id="scope_form">
 											<h4>
 												<strong>Descripción del alcance del proyecto
 													<span></span>
@@ -255,7 +255,8 @@
 											<textarea class="form-control" name="descripcion_alcance" id="descripcion_alcance" placeholder="Descripción del alcance"
 											 cols="30" rows="10" required></textarea>
 											<br>
-											<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalentregable">Agregar Entregables</button>
+											<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalentregable">Agregar
+												Entregables</button>
 											<!-- modal entregable -->
 											<div class="modal fade" id="modalentregable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 												<div class="modal-dialog" role="document">
@@ -285,12 +286,12 @@
 												<strong>Lista de entregables del proyecto
 													<span></span>
 												</strong>
-												</h4>
+											</h4>
 											<table class="table table-striped">
 												<thead>
 													<tr>
 														<td>Nombre</td>
-													<td>Estado</td>
+														<td>Estado</td>
 														<td>Operaciones</td>
 													</tr>
 												</thead>
@@ -319,7 +320,45 @@
 									EDT tab
 								</div>
 								<div class="tab-pane fade" id="pills-activity" role="tabpanel" aria-labelledby="pills-activity-tab">
-									actividades tab
+									<div class="col-sm-8">
+										<form class="activity_form" method="POST">
+											<h4>
+												<strong>Nombre de la actividad
+													<span></span>
+												</strong>
+											</h4>
+											<input type="text" class="form-control" name="nombre_actividad" id="nombre_actividad" placeholder="Nombre de la actividad"
+											 required>
+											<br>
+											<h4>
+												<strong>Descripción de la actividad
+													<span></span>
+												</strong>
+											</h4>
+											<textarea class="form-control" name="descripcion_actividad" id="descripcion_actividad" placeholder="Descripción de la actividad"
+											 required></textarea>
+											<br />
+											<h4>
+												<strong>Duración estimada de la actividad
+													<span></span>
+												</strong>
+											</h4>
+											<input type="text" class="form-control" name="duracion_actividad" id="duracion_actividad" placeholder="Duración de la actividad"
+											 required>
+											<br>
+											<h4>
+												<strong>Fecha de inicio
+													<span></span>
+												</strong>
+											</h4>
+											<input type="date" class="form-control" name="fecha_inicio_actividad" id="fecha_inicio_actividad"
+											 placeholder="Fecha de inicio" required>
+											<br>
+											<button class="btn btn-primary btn-block" type="submit" onsubmit="sendActivity(e)">
+												<i class="fa fa-save"> Guardar requisito</i>
+											</button>
+										</form>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -385,6 +424,10 @@
 		});
 		$("#scope_form").submit(function (e) {
 			sendReach();
+			return false;
+		});
+		$("#activity_form").submit(function (e) {
+			sendActivity();
 			return false;
 		});
 		$('#confirm-delete').on('show.bs.modal', function (e) {
