@@ -1,12 +1,21 @@
-$(document).ready(function(){
-    activityList()
-})
 function sendActivity() {
     var nombre_actividad = $("#nombre_actividad").val();
     var descripcion_actividad = $("#descripcion_actividad").val();
     var duracion_actividad = $("#duracion_actividad").val();
     var fecha_inicio_actividad = $("#fecha_inicio_actividad").val();
-    var fecha_fin_actividad = "";//calculate
+
+    /**
+     * Calculate final date
+     */
+    let fecha = new Date(fecha_inicio_actividad);
+    console.log(fecha+"before")
+    fecha.setDate(fecha.getDate()+parseInt(duracion_actividad));
+    /**
+     * fin calculate
+     */
+    console.log(fecha)
+    var fecha_fin_actividad = fecha.getFullYear()+"-"+(fecha.getMonth()+1)+"-"+(fecha.getDate()+1);//calculate
+    console.log(fecha_fin_actividad)
     $.ajax({
         url: "Logic/Scripts/Activity/addActivity.php",
         type: "POST",
@@ -26,7 +35,7 @@ function sendActivity() {
                     '<div class="modal-dialog modal-sm" role="document">' +
                     '<div class="modal-content">' +
                     `<div class="modal-body">
-                            Actividad Guardado
+                            Actividad Guardada
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">cerrar</button>

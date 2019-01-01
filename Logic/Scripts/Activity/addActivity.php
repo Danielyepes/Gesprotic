@@ -1,6 +1,6 @@
 <?php
 
-include "../php/conect.php";
+include "../../php/conect.php";
 
 foreach ($_POST as $key => $clave) {
     $asignacion = "\$" . $key . "='" . $clave . "';";

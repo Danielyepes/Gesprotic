@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="assets/vendor/chartist/css/chartist-custom.css">
 
 	<link rel="stylesheet" href="assets/css/fastselect.min.css">
-
+	<link rel="stylesheet" href="assets/css/mermaid.min.css">
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="assets/css/main.css">
 
@@ -317,11 +317,129 @@
 									</div>
 								</div>
 								<div class="tab-pane fade" id="pills-edt" role="tabpanel" aria-labelledby="pills-edt-tab">
-									EDT tab
+									<div class="card">
+										<div class="card-title">
+											Agregar campos al diagrama
+										</div>
+										<div class="card-body">
+											<div class="table-responsive">
+												<div class="form-group">
+													<div class="col-lg-4 col-md-4 col-sm-12">
+														<label for="actividad">Nombre del campo</label>
+														<input id="actividad" name="actividad" class="form-control" type="text">
+														<div class="form-check">
+															<label class="form-check-label" for="inicio-fin">
+																<input type="radio" class="form-check-input radionocomplemento" id="inicio-fin" name="flujoradio" value="circle"
+																 checked="">
+																<img class="img-fluid" src="images/inicio_fin.JPG" alt="">
+															</label>
+														</div>
+														<div class="form-check">
+															<label class="form-check-label" for="radio3">
+																<input type="radio" class="form-check-input radiocomplemento" id="radio3" name="flujoradio" value="condition">
+																<img class="img-fluid" src="images/options.JPG" alt="">
+															</label>
+														</div>
+														<div class="form-check">
+															<label class="form-check-label" for="radio4">
+																<input type="radio" class="form-check-input radiocomplemento" id="radio4" name="flujoradio" value="activity">
+																<img class="img-fluid" src="images/actividad.JPG" alt="">
+															</label>
+														</div>
+														<div class="form-check">
+															<label class="form-check-label" for="radio5">
+																<input type="radio" class="form-check-input radiocomplemento" id="radio5" name="flujoradio" value="doc">
+																<img class="img-fluid" src="images/infodoc.png" alt="">
+															</label>
+														</div>
+														<div class="form-group complemento" style="display:none">
+															<label class="form-check-label" for="responsable">Responsable</label>
+															<select type="text" class="form-control responsable" id="responsable_act">
+																<option disabled="" selected="" value="0"> Seleccione un cargo</option>
+																<option value="5">Gerente - Antonio </option>
+															</select>
+														</div>
+														<div class="form-group complemento" style="display:none">
+															<label class="form-check-label" for="descripcion">Descripción</label>
+															<textarea type="text" class="form-control" id="descripcion"></textarea>
+														</div>
+														<div class="form-group complemento" style="display:none">
+															<label class="form-check-label" for="evidencia">Evidencia</label>
+															<textarea type="text" class="form-control" id="evidencia"></textarea>
+														</div>
+
+														<button type="submit" class="btn btn-primary btn-agregar" id="render">Agregar</button>
+
+													</div>
+													<div class="col-lg-4 col-md-4 col-sm-12">
+														Enlaces
+														<div class="form-group">
+															<label for="">Elemento 1</label>
+															<select name="" id="elemento1" class="form-control elementos">
+
+															</select>
+														</div>
+														<div class="form-group">
+															<label for="">Elemento 2</label>
+															<select name="" id="elemento2" class="form-control elementos">
+															</select>
+														</div>
+														<div class="form-group">
+															<label for="">Nombre Enlaces</label>
+															<input class="form-control" type="text" name="" id="nombre-enlace">
+														</div>
+														<div class="form-group">
+															<button type="submit" class="btn btn-primary btn-cargar">Agregar</button>
+															<button type="submit" class="btn btn-danger btn-borrar">borrar</button>
+														</div>
+													</div>
+													<div class="col-lg-4 col-md-4 col-sm-12">
+														<div class="form-group">
+															<label for="preview">Editor</label>
+															<textarea class="form-control" id="preview" style="height: 231px;" disabled=""></textarea>
+															<br>
+															<!-- <button type="submit" class="btn btn-primary btn-update">Actualizar</button> -->
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="card">
+										<div class="card-title">
+										</div>
+										<div class="card-body">
+											<div class="table-responsive">
+												<center>
+													<div id="chart">
+
+													</div>
+												</center>
+												<div class="form-group" style="float: right">
+													<button type="submit" class="btn btn-primary boton-guardar">Guardar</button>
+													<!-- <button class="btn btn-primary" id="download_link" href="#">Descargar</button> -->
+													<button type="submit" class="btn btn-primary btn-exit" data-toggle="modal" data-target="#salirmodal">Salir</button>
+												</div>
+											</div>
+										</div>
+										<table class="table table-striped" id="tab">
+											<thead>
+												<tr class="warning">
+													<th>Actividad</th>
+													<th>Descripcion</th>
+													<th>Evidencia</th>
+													<th>Responsable</th>
+												</tr>
+											</thead>
+											<tbody id="actividades">
+
+											</tbody>
+										</table>
+									</div>
 								</div>
 								<div class="tab-pane fade" id="pills-activity" role="tabpanel" aria-labelledby="pills-activity-tab">
 									<div class="col-sm-8">
-										<form class="activity_form" method="POST">
+										<form id="activity_form" method="POST">
 											<h4>
 												<strong>Nombre de la actividad
 													<span></span>
@@ -343,8 +461,8 @@
 													<span></span>
 												</strong>
 											</h4>
-											<input type="text" class="form-control" name="duracion_actividad" id="duracion_actividad" placeholder="Duración de la actividad"
-											 required>
+											<input type="text" class="form-control" name="duracion_actividad" id="duracion_actividad" placeholder="Duración de la actividad(en días)"
+											 onkeypress="return justNumbers(event);" required>
 											<br>
 											<h4>
 												<strong>Fecha de inicio
@@ -411,6 +529,8 @@
 	<script src="Logic/Controllers/Deliverable/deliverable.js"></script>
 	<script src="Logic/Controllers/Reach/reach.js"></script>
 	<script src="assets/scripts/fastsearch.js"></script>
+	<script src="Logic/Controllers/Activity/activity.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.js"></script>
 	<script type="text/javascript">
 		$('.multipleSelect').fastselect({
 			placeholder: 'Seleccione los requisitos a excluir',
@@ -435,7 +555,293 @@
 			//			$('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
 		});
 	</script>
+	<script>
 
+		function hiddenzone() {
+			$("#mceu_31").css("display", "none");
+
+		}
+
+		function paintSvgToCanvas(uSvg, uCanvas) {
+
+			var pbx = document.createElement('img');
+
+			pbx.style.width = uSvg.style.width;
+			pbx.style.height = uSvg.style.height;
+			pbx.src = 'data:image/svg+xml;base64,' + window.btoa(new XMLSerializer().serializeToString(uSvg));
+
+			document.body.appendChild(pbx);
+
+			var dl = document.createElement("a");
+			document.body.appendChild(dl);
+			dl.setAttribute("href", pbx.src);
+			dl.setAttribute("id", "download_svg");
+			dl.setAttribute("download", "test.svg");
+			dl.click();
+
+			uCanvas.getContext('2d').drawImage(pbx, 0, 0);
+
+		}
+		$("#download_link").click(function () {
+
+			paintSvgToCanvas(document.getElementById('svgchart'), document.getElementById('myCanvas'));
+
+			var es_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+			if (es_firefox) {
+			}
+		})
+
+		mermaidAPI.initialize({
+			logLevel: 1,
+			startOnLoad: false
+		});
+		$("#nombre-enlace").val("");
+		var arraylist = Array();
+		var headerChart = "graph TD;\n", res = "";
+		sessionStorage.setItem("head", headerChart);
+		arraylist.push(headerChart);
+		render.onclick = function () {
+			var lista = Array();
+			var contenidolista = "";
+			var random = Math.floor(Math.random() * 5);
+			sessionStorage.random = random;
+			if ($('input[name=actividad]').val() != "") {
+				option = $('input[name=flujoradio]:checked').val();
+				act = $('input[name=actividad]').val();
+				if (option == "circle") {
+					res += act.replace(/ /g, "") + '((' + act.replace(/ /g, "") + '));\n';
+					$('input[name=actividad]').val("");
+					lista.push(act);
+					sessionStorage.setItem("declaration", res)
+					for (var i in lista) {
+						contenidolista = '<option value="' + lista[i].replace(/ /g, "") + '">' + lista[i] + '</option>'
+					}
+					$(".elementos").append(contenidolista);
+				} else if (option == "condition") {
+					res += act.replace(/ /g, "") + '{' + act.replace(/ /g, "") + '};\n';
+				} else if (option == "activity") {
+					res += act.replace(/ /g, "") + '[' + act.replace(/ /g, "") + '];\n';
+				} else if (option == "doc") {
+					res += act.replace(/ /g, "") + '>' + act.replace(/ /g, "") + '];\n';
+				}
+
+                /**
+                contenido tabla
+                */
+				if (option != "circle") {
+					var responsable = $("#responsable_act option:selected").val();
+					var descripcion = $("#descripcion").val();
+					var evidencia = $("#evidencia").val();
+					if (responsable != "" && descripcion != "" && evidencia != "") {
+						$('input[name=actividad]').val("");
+						lista.push(act);
+						sessionStorage.setItem("declaration", res)
+						for (var i in lista) {
+							contenidolista = '<option value="' + lista[i].replace(/ /g, "") + '">' + lista[i] + '</option>'
+						}
+						$(".elementos").append(contenidolista);
+						$.ajax({
+							url: 'back/php/addactividad.php',
+							dataType: "json",
+							type: "POST",
+							data: {
+								act: act,
+								responsable: responsable,
+								descripcion: descripcion,
+								evidencia: evidencia
+							},
+							success: function (data) {
+							},
+							error: function (data) { }
+						});
+						var campotablaAct = `<tr>
+                            <td>`+ act + `</td>
+                            <td>`+ descripcion + `</td>
+                            <td>`+ evidencia + `</td>
+                            <td>`+ responsable + `</td>
+                        </tr>`;
+						$("#actividades").append(campotablaAct);
+						$("#descripcion").val("");
+						$("#evidencia").val("");
+					} else {
+						alert("llene todos los campos de la actividad")
+					}
+				}
+			} else {
+				alert("ingrese un nombre para el campo")
+			}
+		}
+
+		var texto = "";
+		var borrar = 0;
+
+		var insertSvg = function (svgCode, bindFunctions) {
+			// Rendering is completed so something with the svgCode
+			var element = document.querySelector("#chart");
+			element.innerHTML = svgCode;
+		};
+
+		$(function () {
+			$(".radiocomplemento").click(() => {
+				var flujo = $(this).val();
+				$(".complemento").css("display", "block");
+			})
+			$(".radionocomplemento").click(() => {
+				var flujo = $(this).val();
+				$(".complemento").css("display", "none");
+			})
+
+			var res1 = "";
+			var res2 = "";
+			var rel = "";
+			var preview = document.getElementById("preview");
+			preview.value = "";
+			var element = document.querySelector("#chart");
+			$(".btn-cargar").click(function () {
+
+				res1 = $("#elemento1 option:selected").val();
+
+				res2 = $("#elemento2 option:selected").val();
+
+				rel = $("#nombre-enlace").val();
+
+				$("#nombre-enlace").val("");
+                /*if (res1 == "condition" || res2 == "condition") {
+                texto += res1 + '(' + rel + ')' + '->' + res2 + '\n';
+                } else {
+                texto += res1 + '->' + res2 + '\n';
+                }*/
+				texto += res1.replace(/ /g, "") + '-->' + '| ' + rel + '|' + res2.replace(/ /g, "") + ';\n';
+				// var flowchart = res + texto;
+				if (borrar > 1) {
+					texto = res1.replace(/ /g, "") + '-->' + '| ' + rel + '|' + res2.replace(/ /g, "") + ';\n';
+				}
+				arraylist.push(res1.replace(/ /g, "") + '-->' + '| ' + rel + '|' + res2.replace(/ /g, "") + ';\n');
+				var flowChart = sessionStorage.head + sessionStorage.declaration + texto;
+				if (borrar > 1) {
+					flowChart = sessionStorage.texto_Value + texto;
+				}
+				sessionStorage.setItem("declaration1", texto);
+				// console.log(flowchart)
+
+				preview.value = flowChart;
+
+				sessionStorage.setItem("texto_Value", flowChart);
+				mermaidAPI.render('svgchart', flowChart, insertSvg, element);
+			});
+
+			$(".btn-update").click(function () {
+				var flowChart = preview.value;
+				preview.value = flowChart;
+				mermaidAPI.render('svgchart', flowChart, insertSvg, element);
+
+			});
+
+			$(".btn-borrar").click(function () {
+				borrar++;
+				res1 = $("#elemento1 option:selected").val();
+
+				res2 = $("#elemento2 option:selected").val();
+
+				rel = $("#nombre-enlace").val();
+
+				var copiaArray = arraylist;
+
+				var texto1 = res1 + '-->' + '| ' + rel + '|' + res2 + ';\n';
+
+				var cantidad = 0;
+				for (var i in copiaArray) {
+					if (texto1 == copiaArray[i]) {
+						cantidad++;
+						copiaArray[i] = "";
+					}
+				} console.log(cantidad)
+				if (cantidad == 1) {
+					texto1 = "";
+				}
+				copiaArray.push(texto1);
+				var textochart = copiaArray.toString().split(",").join("").replace(sessionStorage.head, "")
+				sessionStorage.setItem("texto_Value", sessionStorage.head + textochart + sessionStorage.declaration)
+				var flowChart = sessionStorage.head + textochart + sessionStorage.declaration;
+				$("#nombre-enlace").val("");
+				preview.value = flowChart;
+				mermaidAPI.render('svgchart', flowChart, insertSvg, element);
+			});
+			$(".boton-guardar").click(function () {
+
+				if ($("#preview").val() != "") {
+					$.ajax({
+						url: 'back/php/addflujograma.php',
+						dataType: "json",
+						type: "POST",
+						data: {
+							flujograma: sessionStorage.getItem("texto_Value"),
+							id_flujograma: sessionStorage.id_flujo,
+							form: 1
+						},
+						success: function (data) {
+							if (data == 1) {
+								alert("Flujograma Guardado");
+								window.close();
+							}
+						},
+						error: function (data) { }
+					});
+				} else {
+					alert("El diagrama está vacío")
+				}
+			});
+			$(".btn-almacenar").click(function () {
+				var description = $("#description").val();
+				var objetivos = $("#objetivos").val();
+				var alcance = $("#alcance").val();
+				var definiciones = $("#definiciones").val();
+				var svg = $("#chart").html();
+				if (description != "" && objetivos != "" && alcance != "" && definiciones != "") {
+					$.ajax({
+						url: 'back/php/addflujograma.php',
+						dataType: "json",
+						type: "POST",
+						data: {
+							descripcion: description,
+							objetivos: objetivos,
+							alcance: alcance,
+							svg: svg,
+							definiciones: definiciones,
+							form: 2
+						},
+						success: function (data) {
+							if (data.finalizado == 1) {
+								alert("Flujograma Guardado");
+								//window.close();
+							}
+						},
+						error: function (data) { console.log(data) }
+					});
+				} else {
+					alert("Necesita llenar esta información");
+				}
+			});
+
+		});
+
+		function SaveActividad() {
+			$.ajax({
+				url: 'back/php/saveActividad.php',
+				dataType: "json",
+				type: "POST",
+				data: {
+					descripcion: $("#descripcion").val(),
+					evidencia: $("#evidencia").val(),
+					responsable: $("#responsable_act").val()
+				},
+				success: function (data) {
+
+				},
+				error: function (data) { console.log(data) }
+			});
+		}
+	</script>
 </body>
 
 </html>
