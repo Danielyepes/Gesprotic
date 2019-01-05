@@ -327,46 +327,7 @@
 													<div class="col-lg-4 col-md-4 col-sm-12">
 														<label for="actividad">Nombre del campo</label>
 														<input id="actividad" name="actividad" class="form-control" type="text">
-														<div class="form-check">
-															<label class="form-check-label" for="inicio-fin">
-																<input type="radio" class="form-check-input radionocomplemento" id="inicio-fin" name="flujoradio" value="circle"
-																 checked="">
-																<img class="img-fluid" src="images/inicio_fin.JPG" alt="">
-															</label>
-														</div>
-														<div class="form-check">
-															<label class="form-check-label" for="radio3">
-																<input type="radio" class="form-check-input radiocomplemento" id="radio3" name="flujoradio" value="condition">
-																<img class="img-fluid" src="images/options.JPG" alt="">
-															</label>
-														</div>
-														<div class="form-check">
-															<label class="form-check-label" for="radio4">
-																<input type="radio" class="form-check-input radiocomplemento" id="radio4" name="flujoradio" value="activity">
-																<img class="img-fluid" src="images/actividad.JPG" alt="">
-															</label>
-														</div>
-														<div class="form-check">
-															<label class="form-check-label" for="radio5">
-																<input type="radio" class="form-check-input radiocomplemento" id="radio5" name="flujoradio" value="doc">
-																<img class="img-fluid" src="images/infodoc.png" alt="">
-															</label>
-														</div>
-														<div class="form-group complemento" style="display:none">
-															<label class="form-check-label" for="responsable">Responsable</label>
-															<select type="text" class="form-control responsable" id="responsable_act">
-																<option disabled="" selected="" value="0"> Seleccione un cargo</option>
-																<option value="5">Gerente - Antonio </option>
-															</select>
-														</div>
-														<div class="form-group complemento" style="display:none">
-															<label class="form-check-label" for="descripcion">Descripción</label>
-															<textarea type="text" class="form-control" id="descripcion"></textarea>
-														</div>
-														<div class="form-group complemento" style="display:none">
-															<label class="form-check-label" for="evidencia">Evidencia</label>
-															<textarea type="text" class="form-control" id="evidencia"></textarea>
-														</div>
+
 
 														<button type="submit" class="btn btn-primary btn-agregar" id="render">Agregar</button>
 
@@ -418,23 +379,10 @@
 												<div class="form-group" style="float: right">
 													<button type="submit" class="btn btn-primary boton-guardar">Guardar</button>
 													<!-- <button class="btn btn-primary" id="download_link" href="#">Descargar</button> -->
-													<button type="submit" class="btn btn-primary btn-exit" data-toggle="modal" data-target="#salirmodal">Salir</button>
 												</div>
 											</div>
 										</div>
-										<table class="table table-striped" id="tab">
-											<thead>
-												<tr class="warning">
-													<th>Actividad</th>
-													<th>Descripcion</th>
-													<th>Evidencia</th>
-													<th>Responsable</th>
-												</tr>
-											</thead>
-											<tbody id="actividades">
-
-											</tbody>
-										</table>
+										
 									</div>
 								</div>
 								<div class="tab-pane fade" id="pills-activity" role="tabpanel" aria-labelledby="pills-activity-tab">
@@ -556,7 +504,6 @@
 		});
 	</script>
 	<script>
-
 		function hiddenzone() {
 			$("#mceu_31").css("display", "none");
 
@@ -587,8 +534,7 @@
 			paintSvgToCanvas(document.getElementById('svgchart'), document.getElementById('myCanvas'));
 
 			var es_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
-			if (es_firefox) {
-			}
+			if (es_firefox) {}
 		})
 
 		mermaidAPI.initialize({
@@ -597,7 +543,8 @@
 		});
 		$("#nombre-enlace").val("");
 		var arraylist = Array();
-		var headerChart = "graph TD;\n", res = "";
+		var headerChart = "graph TD;\n",
+			res = "";
 		sessionStorage.setItem("head", headerChart);
 		arraylist.push(headerChart);
 		render.onclick = function () {
@@ -608,65 +555,20 @@
 			if ($('input[name=actividad]').val() != "") {
 				option = $('input[name=flujoradio]:checked').val();
 				act = $('input[name=actividad]').val();
-				if (option == "circle") {
-					res += act.replace(/ /g, "") + '((' + act.replace(/ /g, "") + '));\n';
-					$('input[name=actividad]').val("");
-					lista.push(act);
-					sessionStorage.setItem("declaration", res)
-					for (var i in lista) {
-						contenidolista = '<option value="' + lista[i].replace(/ /g, "") + '">' + lista[i] + '</option>'
-					}
-					$(".elementos").append(contenidolista);
-				} else if (option == "condition") {
-					res += act.replace(/ /g, "") + '{' + act.replace(/ /g, "") + '};\n';
-				} else if (option == "activity") {
-					res += act.replace(/ /g, "") + '[' + act.replace(/ /g, "") + '];\n';
-				} else if (option == "doc") {
-					res += act.replace(/ /g, "") + '>' + act.replace(/ /g, "") + '];\n';
-				}
 
-                /**
-                contenido tabla
-                */
-				if (option != "circle") {
-					var responsable = $("#responsable_act option:selected").val();
-					var descripcion = $("#descripcion").val();
-					var evidencia = $("#evidencia").val();
-					if (responsable != "" && descripcion != "" && evidencia != "") {
-						$('input[name=actividad]').val("");
-						lista.push(act);
-						sessionStorage.setItem("declaration", res)
-						for (var i in lista) {
-							contenidolista = '<option value="' + lista[i].replace(/ /g, "") + '">' + lista[i] + '</option>'
-						}
-						$(".elementos").append(contenidolista);
-						$.ajax({
-							url: 'back/php/addactividad.php',
-							dataType: "json",
-							type: "POST",
-							data: {
-								act: act,
-								responsable: responsable,
-								descripcion: descripcion,
-								evidencia: evidencia
-							},
-							success: function (data) {
-							},
-							error: function (data) { }
-						});
-						var campotablaAct = `<tr>
-                            <td>`+ act + `</td>
-                            <td>`+ descripcion + `</td>
-                            <td>`+ evidencia + `</td>
-                            <td>`+ responsable + `</td>
-                        </tr>`;
-						$("#actividades").append(campotablaAct);
-						$("#descripcion").val("");
-						$("#evidencia").val("");
-					} else {
-						alert("llene todos los campos de la actividad")
-					}
+				res += act.replace(/ /g, "") + '[' + act.replace(/ /g, "") + '];\n';
+
+				$('input[name=actividad]').val("");
+				lista.push(act);
+				sessionStorage.setItem("declaration", res)
+				for (var i in lista) {
+					contenidolista = '<option value="' + lista[i].replace(/ /g, "") + '">' + lista[i] + '</option>'
 				}
+				$(".elementos").append(contenidolista);
+
+				/**
+				contenido tabla
+				*/
 			} else {
 				alert("ingrese un nombre para el campo")
 			}
@@ -706,11 +608,11 @@
 				rel = $("#nombre-enlace").val();
 
 				$("#nombre-enlace").val("");
-                /*if (res1 == "condition" || res2 == "condition") {
-                texto += res1 + '(' + rel + ')' + '->' + res2 + '\n';
-                } else {
-                texto += res1 + '->' + res2 + '\n';
-                }*/
+				/*if (res1 == "condition" || res2 == "condition") {
+				texto += res1 + '(' + rel + ')' + '->' + res2 + '\n';
+				} else {
+				texto += res1 + '->' + res2 + '\n';
+				}*/
 				texto += res1.replace(/ /g, "") + '-->' + '| ' + rel + '|' + res2.replace(/ /g, "") + ';\n';
 				// var flowchart = res + texto;
 				if (borrar > 1) {
@@ -755,7 +657,8 @@
 						cantidad++;
 						copiaArray[i] = "";
 					}
-				} console.log(cantidad)
+				}
+				console.log(cantidad)
 				if (cantidad == 1) {
 					texto1 = "";
 				}
@@ -785,7 +688,7 @@
 								window.close();
 							}
 						},
-						error: function (data) { }
+						error: function (data) {}
 					});
 				} else {
 					alert("El diagrama está vacío")
@@ -816,7 +719,9 @@
 								//window.close();
 							}
 						},
-						error: function (data) { console.log(data) }
+						error: function (data) {
+							console.log(data)
+						}
 					});
 				} else {
 					alert("Necesita llenar esta información");
@@ -824,23 +729,6 @@
 			});
 
 		});
-
-		function SaveActividad() {
-			$.ajax({
-				url: 'back/php/saveActividad.php',
-				dataType: "json",
-				type: "POST",
-				data: {
-					descripcion: $("#descripcion").val(),
-					evidencia: $("#evidencia").val(),
-					responsable: $("#responsable_act").val()
-				},
-				success: function (data) {
-
-				},
-				error: function (data) { console.log(data) }
-			});
-		}
 	</script>
 </body>
 
