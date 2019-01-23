@@ -2695,3 +2695,11 @@ select multiple
 .fstMultipleMode .fstControls {
   width: 100%;
 }
+
+.card-title{
+  text-align: center;
+}
+
+.card-title h2{
+  font-weight: 600
+}
