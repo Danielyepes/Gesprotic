@@ -100,8 +100,30 @@
 							</a>
 						</li>
 						<li>
-							<a href="iso21500.html" class="active">
-								<i class="lnr lnr-book"></i> <span>ISO 21500</span></a>
+							<h4 class="heading">Generalidades</h4>
+						</li>
+						<li>
+							<a href="alcance.html" class="active">
+								<i class="lnr lnr-chart-bars"></i>
+								<span>Gestión del Alcance</span>
+							</a>
+						</li>
+						<li>
+							<a href="tiempo.html" class="active">
+								<i class="lnr lnr-clock"></i>
+								<span>Gestión del tiempo</span>
+							</a>
+						</li>
+						<li>
+							<a href="costes.html" class="active">
+								<i class="lnr lnr-diamond"></i>
+								<span>Gestión de costes</span>
+							</a>
+						</li>
+						<li>
+							<a href="riesgos.html" class="active">
+								<i class="lnr lnr-warning"></i>
+								<span>Gestión de riesgos</span>
 							</a>
 						</li>
 					</ul>
@@ -118,12 +140,16 @@
 				<div class="container-fluid">
 					<!-- OVERVIEW -->
 					<div class="row">
+						<h4> Las siguientes guías han sido creadas por el Grupo de Análisis para la implantación de la norma ISO 21500</h4>
+						<span>Se puede encontrar las guías completas en <a href="http://iso-21500.es/" target="_blank">http://iso-21500.es/</a></span>
+						<br>
+						<br>
 						<div class="card-header border-bottom-0 bg-transparent">
 							<ul class="nav nav-tabs justify-content-center pt-4" id="pills-tab" role="tablist">
 								<li class="nav-item active">
 									<a class="nav-link text-primary" id="pills-login-tab" data-toggle="pill" href="#pills-login" role="tab"
 									 aria-controls="pills-login" aria-selected="true">
-										<i class="lnr lnr-chart-bars"></i> Gestión del Alcance</a>
+										<i class="lnr lnr-chart-bars"></i> Gestión de Alcance</a>
 								</li>
 
 								<li class="nav-item">
@@ -143,30 +169,53 @@
 								</li>
 							</ul>
 						</div>
-
 						<div class="card-body">
 							<div class="tab-content" id="pills-tabContent">
 								<div class="tab-pane fade active in" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
-									<div class="metric">
-										<span class="icon">
-											<i class="fa fa-download"></i>
-										</span>
-										<p>
-											<span class="number">1,252</span>
-											<span class="title">Downloads</span>
-										</p>
+									<div class="container-fluid">
+										<div class="row">
+											<div class="bordered">
+												<embed src="assets/resources/03_gestion_del_alcance_v01r00.pdf" width="100%" height="500" alt="pdf"
+												 pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">
+											</div>
+											<!-- <iframe src="http://docs.google.com/gview?url=localhost/Gesprotic/assets/resources/03_gestion_del_alcance_v01r00.pdf&embedded=true" width="500" height="500" frameborder="2"></iframe> -->
+										</div>
 									</div>
 								</div>
 
 								<div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="pills-register-tab">
-									tab2
+									<div class="container-fluid">
+										<div class="row">
+											<div class="bordered">
+												<embed src="assets/resources/05_gestion_del_tiempo_v01r00.pdf" width="100%" height="500" alt="pdf"
+												 pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">
+											</div>
+											<!-- <iframe src="http://docs.google.com/gview?url=localhost/Gesprotic/assets/resources/05_gestion_del_tiempo_v01r00.pdf&embedded=true" width="500" height="500" frameborder="2"></iframe> -->
+										</div>
+									</div>
 								</div>
 								<div class="tab-pane fade" id="pills-time" role="tabpanel" aria-labelledby="pills-time">
-									tab3
+									<div class="container-fluid">
+										<div class="row">
+											<div class="bordered">
+												<embed src="assets/resources/06_gestion_de_costes_v01r00.pdf" width="100%" height="500" alt="pdf"
+												 pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">
+											</div>
+											<!-- <iframe src="http://docs.google.com/gview?url=localhost/Gesprotic/assets/resources/06_gestion_de_costes_v01r00.pdf&embedded=true" width="500" height="500" frameborder="2"></iframe> -->
+										</div>
+									</div>
 								</div>
 
 								<div class="tab-pane fade" id="pills-risk" role="tabpanel" aria-labelledby="pills-risk">
-									tab4
+									<div class="container-fluid">
+										<div class="row">
+											<div class="bordered">
+												<embed src="assets/resources/07_gestion_de_los_riesgos_v01r01.pdf" width="100%" height="500" alt="pdf"
+												 pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">
+											</div>
+											<!-- <iframe src="http://docs.google.com/gview?url=localhost/Gesprotic/assets/resources/07_gestion_de_los_riesgos_v01r01.pdf&embedded=true" width="500" height="500" frameborder="2"></iframe> -->
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -195,128 +244,6 @@
 	<script src="assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
 	<script src="assets/vendor/chartist/js/chartist.min.js"></script>
 	<script src="assets/scripts/klorofil-common.js"></script>
-
-
-	<script>
-		$(function () {
-			var data, options;
-
-			// headline charts
-			data = {
-				labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-				series: [
-					[23, 29, 24, 40, 25, 24, 35],
-					[14, 25, 18, 34, 29, 38, 44],
-				]
-			};
-
-			options = {
-				height: 300,
-				showArea: true,
-				showLine: false,
-				showPoint: false,
-				fullWidth: true,
-				axisX: {
-					showGrid: false
-				},
-				lineSmooth: false,
-			};
-
-			new Chartist.Line('#headline-chart', data, options);
-
-
-			// visits trend charts
-			data = {
-				labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-				series: [{
-						name: 'series-real',
-						data: [200, 380, 350, 320, 410, 450, 570, 400, 555, 620, 750, 900],
-					},
-					{
-						name: 'series-projection',
-						data: [240, 350, 360, 380, 400, 450, 480, 523, 555, 600, 700, 800],
-					}
-				]
-			};
-
-			options = {
-				fullWidth: true,
-				lineSmooth: false,
-				height: "270px",
-				low: 0,
-				high: 'auto',
-				series: {
-					'series-projection': {
-						showArea: true,
-						showPoint: false,
-						showLine: false
-					},
-				},
-				axisX: {
-					showGrid: false,
-
-				},
-				axisY: {
-					showGrid: false,
-					onlyInteger: true,
-					offset: 0,
-				},
-				chartPadding: {
-					left: 20,
-					right: 20
-				}
-			};
-
-			new Chartist.Line('#visits-trends-chart', data, options);
-
-
-			// visits chart
-			data = {
-				labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-				series: [
-					[6384, 6342, 5437, 2764, 3958, 5068, 7654]
-				]
-			};
-
-			options = {
-				height: 300,
-				axisX: {
-					showGrid: false
-				},
-			};
-
-			new Chartist.Bar('#visits-chart', data, options);
-
-
-			// real-time pie chart
-			var sysLoad = $('#system-load').easyPieChart({
-				size: 130,
-				barColor: function (percent) {
-					return "rgb(" + Math.round(200 * percent / 100) + ", " + Math.round(200 * (1.1 - percent / 100)) + ", 0)";
-				},
-				trackColor: 'rgba(245, 245, 245, 0.8)',
-				scaleColor: false,
-				lineWidth: 5,
-				lineCap: "square",
-				animate: 800
-			});
-
-			var updateInterval = 3000; // in milliseconds
-
-			setInterval(function () {
-				var randomVal;
-				randomVal = getRandomInt(0, 100);
-
-				sysLoad.data('easyPieChart').update(randomVal);
-				sysLoad.find('.percent').text(randomVal);
-			}, updateInterval);
-
-			function getRandomInt(min, max) {
-				return Math.floor(Math.random() * (max - min + 1)) + min;
-			}
-
-		});
-	</script>
 
 </body>
 

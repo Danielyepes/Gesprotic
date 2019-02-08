@@ -318,22 +318,23 @@
 								</div>
 								<div class="tab-pane fade" id="pills-edt" role="tabpanel" aria-labelledby="pills-edt-tab">
 									<div class="card">
-										<div class="card-title">
-											Agregar campos al diagrama
-										</div>
+										
+											
+										
 										<div class="card-body">
 											<div class="table-responsive">
 												<div class="form-group">
 													<div class="col-lg-4 col-md-4 col-sm-12">
-														<label for="actividad">Nombre del campo</label>
-														<input id="actividad" name="actividad" class="form-control" type="text">
-
-
-														<button type="submit" class="btn btn-primary btn-agregar" id="render">Agregar</button>
-
-													</div>
-													<div class="col-lg-4 col-md-4 col-sm-12">
-														Enlaces
+														<strong>Ccampos al diagrama</strong><br>
+														<div class="col-md-8 col-sm-10" style="padding-left:0">
+															<input id="actividad" name="actividad" class="form-control" type="text" placeholder="Nombre del campo">
+														</div>
+														<div class="col-md-4 col-sm-2" style="padding:0">
+															<button type="submit" class="btn btn-group btn-primary btn-agregar" id="render"><i class="fa fa-plus"></i></button>
+															<button type="submit" class="btn btn-group btn-danger btn-delete"><i class="fa fa-trash"></i></button>
+														</div>
+														<hr>
+														<strong>Enlaces</strong>
 														<div class="form-group">
 															<label for="">Elemento 1</label>
 															<select name="" id="elemento1" class="form-control elementos">
@@ -355,35 +356,41 @@
 														</div>
 													</div>
 													<div class="col-lg-4 col-md-4 col-sm-12">
+														<div class="card">
+															<div class="card-title">
+															</div>
+															<div class="card-body">
+																<div class="table-responsive">
+																		<div class="form-group" style="float: right">
+																			<button type="submit" class="btn btn-primary boton-guardar">Guardar</button>
+																			<!-- <button class="btn btn-primary" id="download_link" href="#">Descargar</button> -->
+																		</div>
+																	<center>
+																		<div id="chart">
+					
+																		</div>
+																	</center>
+																</div>
+															</div>
+															
+														</div>
+													</div>
+													<div  style="display:none">
+														<textarea class="form-control" id="preview" style="height: 231px;" disabled=""></textarea>
+													</div>
+													<!-- <div class="col-lg-4 col-md-4 col-sm-12">
 														<div class="form-group">
 															<label for="preview">Editor</label>
 															<textarea class="form-control" id="preview" style="height: 231px;" disabled=""></textarea>
 															<br>
 															<!-- <button type="submit" class="btn btn-primary btn-update">Actualizar</button> -->
-														</div>
-													</div>
+														<!-- </div>
+													</div> -->
 												</div>
 											</div>
 										</div>
 									</div>
-									<div class="card">
-										<div class="card-title">
-										</div>
-										<div class="card-body">
-											<div class="table-responsive">
-												<center>
-													<div id="chart">
-
-													</div>
-												</center>
-												<div class="form-group" style="float: right">
-													<button type="submit" class="btn btn-primary boton-guardar">Guardar</button>
-													<!-- <button class="btn btn-primary" id="download_link" href="#">Descargar</button> -->
-												</div>
-											</div>
-										</div>
-										
-									</div>
+									
 								</div>
 								<div class="tab-pane fade" id="pills-activity" role="tabpanel" aria-labelledby="pills-activity-tab">
 									<div class="col-sm-8">
@@ -529,13 +536,13 @@
 			uCanvas.getContext('2d').drawImage(pbx, 0, 0);
 
 		}
-		$("#download_link").click(function () {
+		// $("#download_link").click(function () {
 
-			paintSvgToCanvas(document.getElementById('svgchart'), document.getElementById('myCanvas'));
+		// 	paintSvgToCanvas(document.getElementById('svgchart'), document.getElementById('myCanvas'));
 
-			var es_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
-			if (es_firefox) {}
-		})
+		// 	var es_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+		// 	if (es_firefox) {}
+		// })
 
 		mermaidAPI.initialize({
 			logLevel: 1,
@@ -550,11 +557,8 @@
 		render.onclick = function () {
 			var lista = Array();
 			var contenidolista = "";
-			var random = Math.floor(Math.random() * 5);
-			sessionStorage.random = random;
 			if ($('input[name=actividad]').val() != "") {
-				option = $('input[name=flujoradio]:checked').val();
-				act = $('input[name=actividad]').val();
+				var act = $('input[name=actividad]').val();
 
 				res += act.replace(/ /g, "") + '[' + act.replace(/ /g, "") + '];\n';
 
@@ -584,14 +588,6 @@
 		};
 
 		$(function () {
-			$(".radiocomplemento").click(() => {
-				var flujo = $(this).val();
-				$(".complemento").css("display", "block");
-			})
-			$(".radionocomplemento").click(() => {
-				var flujo = $(this).val();
-				$(".complemento").css("display", "none");
-			})
 
 			var res1 = "";
 			var res2 = "";
@@ -632,12 +628,12 @@
 				mermaidAPI.render('svgchart', flowChart, insertSvg, element);
 			});
 
-			$(".btn-update").click(function () {
-				var flowChart = preview.value;
-				preview.value = flowChart;
-				mermaidAPI.render('svgchart', flowChart, insertSvg, element);
+			// $(".btn-update").click(function () {
+			// 	var flowChart = preview.value;
+			// 	preview.value = flowChart;
+			// 	mermaidAPI.render('svgchart', flowChart, insertSvg, element);
 
-			});
+			// });
 
 			$(".btn-borrar").click(function () {
 				borrar++;
@@ -669,6 +665,39 @@
 				$("#nombre-enlace").val("");
 				preview.value = flowChart;
 				mermaidAPI.render('svgchart', flowChart, insertSvg, element);
+			});
+			$(".btn-delete").click(function () {
+				if ($('input[name=actividad]').val() != "") {
+				
+				var act = $('input[name=actividad]').val();
+
+				var copiaArray = arraylist;
+
+				var array = sessionStorage.declaration.replace(" ","").split(";\n");
+
+				var texto1 = act.replace(/ /g, "") + '[' + act.replace(/ /g, "") + '];\n';
+
+				var cantidad = 0;
+				for (var i in copiaArray) {
+					if (texto1 == copiaArray[i]) {
+						cantidad++;
+						copiaArray[i] = "";
+					}
+				}
+				console.log(cantidad)
+				if (cantidad == 1) {
+					texto1 = "";
+				}
+				copiaArray.push(texto1);
+				var textochart = copiaArray.toString().split(",").join("").replace(sessionStorage.head, "")
+				sessionStorage.setItem("texto_Value", sessionStorage.head + textochart + sessionStorage.declaration)
+				var flowChart = sessionStorage.head + textochart + sessionStorage.declaration;
+				$('input[name=actividad]').val("");
+				preview.value = flowChart;
+				mermaidAPI.render('svgchart', flowChart, insertSvg, element);
+				}else{
+					alert("Ingrese un nombre al campo");
+				}
 			});
 			$(".boton-guardar").click(function () {
 

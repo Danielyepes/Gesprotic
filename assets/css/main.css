@@ -2695,3 +2695,14 @@ select multiple
 .fstMultipleMode .fstControls {
   width: 100%;
 }
+
+.nav li .heading{
+  background: #8d9093;
+  margin: 0;
+  padding: 8px 10px;
+  color: #fff;
+}
+
+.bordered{
+  border:1px solid;
+}
