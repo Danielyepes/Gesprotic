@@ -1,6 +1,6 @@
 <?php
 
-include "../php/conect.php";
+include "../../php/conect.php";
 
 $id = $_GET["id"];
 
@@ -10,4 +10,4 @@ $query = "DELETE from `proyecto` WHERE id = $id";
 
 mysqli_query($conection, $query);
 
-header("location: ../../index.html");
+header("location: ../../../index.html");

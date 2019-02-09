@@ -70,7 +70,7 @@ function requirementList() {
                     "</td>" +
                     '<td> <button class="btn btn-primary" onclick="edit(' +
                     data[i].id +
-                    ')"><i class="fa fa-eye"></i></button>' +
+                    ')"><i class="fa fa-pencil"></i></button>'+
                     ' <button class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete" data-href="Logic/Scripts/deleteRequirement.php?id='+data[i].id+'"><i class="fa fa-close"></i></button>' +
                     "</td>" +
                     "</tr>";

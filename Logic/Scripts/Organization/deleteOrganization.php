@@ -1,13 +1,13 @@
 <?php
 
-include "../php/conect.php";
+include "../../php/conect.php";
 
 $id = $_GET["id"];
 
 $conection = Conection();
 
-$query = "DELETE from `proyecto` WHERE id = $id";
+$query = "DELETE from `organizacion` WHERE id = $id";
 
 mysqli_query($conection, $query);
 
-header("location: ../../index.html");
+header("location: ../../../index.html");

@@ -9,7 +9,7 @@ foreach ($_POST as $key => $clave) {
 
 $conection = Conection();
 
-$query = "INSERT INTO `project`( `titulo`, `id_organizacion`)
+$query = "INSERT INTO `proyecto`( `titulo`, `id_organizacion`)
         VALUES ('$titulo',
         '$id_organizacion')";
 

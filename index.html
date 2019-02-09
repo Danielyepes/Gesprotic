@@ -126,13 +126,13 @@
 								<li class="nav-item active">
 									<a class="nav-link text-primary" id="pills-organization-tab" data-toggle="pill" href="#pills-organization"
 									 role="tab" aria-controls="pills-organization" aria-selected="true">
-										<i class="lnr lnr-chart-bars"></i> Crear organización</a>
+										<i class="lnr lnr-apartment"></i> Gestionar organización</a>
 								</li>
 
 								<li class="nav-item">
 									<a class="nav-link text-primary" id="pills-project-tab" data-toggle="pill" href="#pills-project" role="tab"
 									 aria-controls="pills-project" aria-selected="false">
-										<i class="lnr lnr-clock"></i> Crear proyecto</a>
+										<i class="lnr lnr-calendar-full"></i> Gestionar proyecto</a>
 								</li>
 							</ul>
 						</div>
@@ -176,7 +176,45 @@
 								</div>
 
 								<div class="tab-pane fade" id="pills-project" role="tabpanel" aria-labelledby="pills-project-tab">
-									tab2
+									<div class="row">
+										<div class="col-md-8">
+											<form id="project-form" method="POST">
+												<h4>
+													<strong>Nombre del proyecto
+														<span></span>
+													</strong>
+												</h4>
+												<input type="text" class="form-control" name="nombre_proyecto" id="nombre_proyecto"
+												 placeholder="Nombre del proyecto" required>
+												<br>
+												<select class="form-control" name="organizationproject" id="organizationproject">
+
+												</select>
+
+												<br>
+												<button class="btn btn-primary btn-block" type="submit">
+													<i class="fa fa-save"> Agregar proyecto</i>
+												</button>
+											</form>
+											<br>
+											<h4>
+												<strong>Lista de proyectos
+													<span></span>
+												</strong>
+											</h4>
+											<table class="table table-striped">
+												<thead>
+													<tr>
+														<td>Id</td>
+														<td>Nombre</td>
+														<td>Organizacion</td>
+													</tr>
+												</thead>
+												<tbody id="project_list">
+												</tbody>
+											</table>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -214,6 +252,23 @@
 			</div>
 		</div>
 	</div>
+	<div class="modal fade" id="confirm-delete-project" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Confirmar Eliminado</h4>
+				</div>
+				<div class="modal-body">
+					<p>¿Usted esta seguro que desea eliminar este proyecto?</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					<a class="btn btn-danger btn-ok">Eliminar</a>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- Javascript -->
 	<script src="assets/vendor/jquery/jquery.min.js"></script>
 	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -222,15 +277,21 @@
 	<script src="assets/vendor/chartist/js/chartist.min.js"></script>
 	<script src="assets/scripts/klorofil-common.js"></script>
 	<script src="Logic/Controllers/Organization/organization.js"></script>
+	<script src="Logic/Controllers/Project/project.js"></script>
 	<script>
 		$("#organization-form").submit(function (e) {
 			sendOrganization();
 			return false;
 		});
-		$("#validate-form1").submit(function (e) {
+		$("#project-form").submit(function (e) {
+			sendProject();
 			return false;
 		});
 		$('#confirm-delete').on('show.bs.modal', function (e) {
+			$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+			//			$('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
+		});
+		$('#confirm-delete-project').on('show.bs.modal', function (e) {
 			$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
 			//			$('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
 		});

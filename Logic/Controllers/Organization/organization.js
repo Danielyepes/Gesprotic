@@ -46,6 +46,7 @@ function organizationList() {
         dataType: "json",
         success: function (data) {
             var response = "";
+            var response1 = "";
 
             for (var i in data) {
                 response +=
@@ -58,15 +59,22 @@ function organizationList() {
                     "</td>" +
                     '<td> <button class="btn btn-primary" onclick="editOrganization(' +
                     data[i].id +
-                    ')"><i class="fa fa-eye"></i></button>' +
-                    ' <button class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete" data-href="Logic/Scripts/deleteRequirement.php?id=' + data[i].id + '"><i class="fa fa-close"></i></button>' +
+                    ')"><i class="fa fa-pencil"></i></button>'+
+                    ' <button class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete" data-href="Logic/Scripts/Organization/deleteOrganization.php?id=' + data[i].id + '"><i class="fa fa-close"></i></button>' +
                     "</td>" +
                     "</tr>";
+                    response1 +=
+                    "<option value='" +
+                    data[i].id +
+                    "'>" +
+                    data[i].nombre +
+                    "</option>";
             }
             if (response == "") {
                 response = '<tr><td colspan="5"><strong>No hay organizaciones agregadas</strong></td></tr>';
             }
             $("#organization_list").html(response);
+            $("#organizationproject").html(response1);
         }
     });
 }
@@ -133,7 +141,6 @@ function updateOrganization(id) {
         },
         dataType: "html",
         success: function (data) {
-            console.log(data)
             if (data == "do_it") {
                 var modal = '<div class="modal fade bs-example-modal-sm OrganizationUpdate" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">' +
                     '<div class="modal-dialog modal-sm" role="document">' +
