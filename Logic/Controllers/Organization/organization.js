@@ -1,6 +1,7 @@
-$(document).ready(function(){
+$(document).ready(function () {
     organizationList()
 })
+
 function sendOrganization() {
     var nombre_organizacion = $("#nombre_organizacion").val();
     $.ajax({
@@ -30,8 +31,10 @@ function sendOrganization() {
                 $(".organization").modal();
             }
             $("#nombre_organizacion").val("");
-            $("#criterio_organizacion").val("");
             organizationList();
+        },
+        error: function (data) {
+            console.log(data)
         }
     });
 }
@@ -88,7 +91,7 @@ function editOrganization(id) {
                         <div class="modal-body">
                         <div class="row">
                         <div class="col-sm-8">
-                        <form class="validate-form1" method="POST" onsubmit="return updateOrganization(` + id + `)">
+                        <form id="validate-form1" method="POST" onsubmit="return updateOrganization(` + id + `)">
                         <input type="hidden" class="form-control" name="id_Organization` + id + `" id="id_Organization` + id + `" value="` + id + `">
                             <h4>
                                 <strong>Nombre de la organización
@@ -96,9 +99,9 @@ function editOrganization(id) {
                                 </strong>
                             </h4>
                             <input type="text" class="form-control" name="nombre_Organization` + id + `" id="nombre_Organization` + id + `" placeholder="Nombre del Entregable"
-                               value="` + data[0].nombre + `" required>
+                            value="` + data[0].nombre + `" required>
                             <br>
-                                <button class="btn btn-primary btn-block" type="submit" id="updateOrganization" onsubmit="return updateOrganization(` + id + `)">
+                                <button class="btn btn-primary btn-block" type="submit" onsubmit="return updateOrganization(` + id + `)">
                                     <i class="fa fa-save"> Actualizar organización</i>
                                 </button>
                             </form>
@@ -120,20 +123,17 @@ function editOrganization(id) {
 function updateOrganization(id) {
     var id_Organization = $("#id_Organization" + id).val();
     var nombre_Organization = $("#nombre_Organization" + id).val();
-    var criterio_aceptacion_Organization = $("#criterio_aceptacion_Organization" + id).val();
-    var estado_Organization = $("#estado_Organization" + id).val();
 
     $.ajax({
         url: "Logic/Scripts/Organization/updateOrganization.php",
         type: "POST",
         data: {
             id: id_Organization,
-            nombre_Organization: nombre_Organization,
-            criterio_aceptacion_Organization: criterio_aceptacion_Organization,
-            estado_Organization: estado_Organization
+            nombre: nombre_Organization,
         },
         dataType: "html",
         success: function (data) {
+            console.log(data)
             if (data == "do_it") {
                 var modal = '<div class="modal fade bs-example-modal-sm OrganizationUpdate" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">' +
                     '<div class="modal-dialog modal-sm" role="document">' +

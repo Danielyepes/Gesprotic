@@ -123,14 +123,6 @@ footer {
   padding-top: 80px;
 }
 
-@media screen and (max-width: 767px) {
-
-  #wrapper #sidebar-nav,
-  #wrapper .main {
-    padding-top: 130px;
-  }
-}
-
 .layout-fullwidth #wrapper .sidebar {
   left: -260px;
 }
@@ -255,12 +247,6 @@ html.fullscreen-bg #wrapper {
   .navbar-default .brand {
     padding-left: 30px;
     padding-right: 15px;
-  }
-}
-
-@media screen and (max-width: 992px) {
-  .navbar-default .brand {
-    display: none;
   }
 }
 

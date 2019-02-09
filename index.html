@@ -142,19 +142,35 @@
 								<div class="tab-pane fade active in" id="pills-organization" role="tabpanel" aria-labelledby="pills-organization-tab">
 									<div class="row">
 										<div class="col-md-8">
-											<form class="organization-form" method="POST">
+											<form id="organization-form" method="POST">
 												<h4>
 													<strong>Nombre de la organización
 														<span></span>
 													</strong>
 												</h4>
-												<input type="text" class="form-control" name="nombre_Organization` + id + `" id="nombre_Organization` + id + `"
-												 placeholder="Nombre de la rganización" required>
+												<input type="text" class="form-control" name="nombre_organizacion" id="nombre_organizacion"
+												 placeholder="Nombre de la organización" required>
 												<br>
 												<button class="btn btn-primary btn-block" type="submit">
 													<i class="fa fa-save"> Agregar organización</i>
 												</button>
 											</form>
+											<br>
+											<h4>
+												<strong>Lista de organizaciones
+													<span></span>
+												</strong>
+											</h4>
+											<table class="table table-striped">
+												<thead>
+													<tr>
+														<td>Id</td>
+														<td>Nombre</td>
+													</tr>
+												</thead>
+												<tbody id="organization_list">
+												</tbody>
+											</table>
 										</div>
 									</div>
 								</div>
@@ -181,7 +197,23 @@
 		</footer>
 	</div>
 	<!-- END WRAPPER -->
-
+	<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Confirmar Eliminado</h4>
+				</div>
+				<div class="modal-body">
+					<p>¿Usted esta seguro que desea eliminar esta organización?</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					<a class="btn btn-danger btn-ok">Eliminar</a>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- Javascript -->
 	<script src="assets/vendor/jquery/jquery.min.js"></script>
 	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -195,6 +227,9 @@
 			sendOrganization();
 			return false;
 		});
+		$("#validate-form1").submit(function (e) {
+			return false;
+		});
 		$('#confirm-delete').on('show.bs.modal', function (e) {
 			$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
 			//			$('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
@@ -202,7 +237,5 @@
 	</script>
 
 </body>
-
-<!-- Mirrored from demo.thedevelovers.com/dashboard/klorofil-v2.0/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 29 Jul 2018 03:56:14 GMT -->
 
 </html>

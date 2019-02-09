@@ -1,5 +1,6 @@
 <?php
 
+
 function Conection() {
 
     $mysql_host = "localhost";
@@ -10,12 +11,13 @@ function Conection() {
 
     $link = mysqli_connect($mysql_host,$mysql_user,$mysql_password,$mysql_database);
 
+    mysqli_set_charset($link,"utf-8");
+
     if (!($link))
     {
         echo "Error conectando a la base de datos.";
         exit();
     }
-
 
     return $link;
 }
