@@ -27,6 +27,9 @@
 </head>
 
 <body onload="requirementList()">
+	<div id="preloadcontent">
+		<span id="preloader"></span>
+	</div>
 	<!-- WRAPPER -->
 	<div id="wrapper">
 
@@ -318,9 +321,9 @@
 								</div>
 								<div class="tab-pane fade" id="pills-edt" role="tabpanel" aria-labelledby="pills-edt-tab">
 									<div class="card">
-										
-											
-										
+
+
+
 										<div class="card-body">
 											<div class="table-responsive">
 												<div class="form-group">
@@ -361,21 +364,21 @@
 															</div>
 															<div class="card-body">
 																<div class="table-responsive">
-																		<div class="form-group" style="float: right">
-																			<button type="submit" class="btn btn-primary boton-guardar">Guardar</button>
-																			<!-- <button class="btn btn-primary" id="download_link" href="#">Descargar</button> -->
-																		</div>
+																	<div class="form-group" style="float: right">
+																		<button type="submit" class="btn btn-primary boton-guardar">Guardar</button>
+																		<!-- <button class="btn btn-primary" id="download_link" href="#">Descargar</button> -->
+																	</div>
 																	<center>
 																		<div id="chart">
-					
+
 																		</div>
 																	</center>
 																</div>
 															</div>
-															
+
 														</div>
 													</div>
-													<div  style="display:none">
+													<div style="display:none">
 														<textarea class="form-control" id="preview" style="height: 231px;" disabled=""></textarea>
 													</div>
 													<!-- <div class="col-lg-4 col-md-4 col-sm-12">
@@ -384,13 +387,13 @@
 															<textarea class="form-control" id="preview" style="height: 231px;" disabled=""></textarea>
 															<br>
 															<!-- <button type="submit" class="btn btn-primary btn-update">Actualizar</button> -->
-														<!-- </div>
+													<!-- </div>
 													</div> -->
 												</div>
 											</div>
 										</div>
 									</div>
-									
+
 								</div>
 								<div class="tab-pane fade" id="pills-activity" role="tabpanel" aria-labelledby="pills-activity-tab">
 									<div class="col-sm-8">
@@ -668,34 +671,34 @@
 			});
 			$(".btn-delete").click(function () {
 				if ($('input[name=actividad]').val() != "") {
-				
-				var act = $('input[name=actividad]').val();
 
-				var copiaArray = arraylist;
+					var act = $('input[name=actividad]').val();
 
-				var array = sessionStorage.declaration.replace(" ","").split(";\n");
+					var copiaArray = arraylist;
 
-				var texto1 = act.replace(/ /g, "") + '[' + act.replace(/ /g, "") + '];\n';
+					var array = sessionStorage.declaration.replace(" ", "").split(";\n");
 
-				var cantidad = 0;
-				for (var i in copiaArray) {
-					if (texto1 == copiaArray[i]) {
-						cantidad++;
-						copiaArray[i] = "";
+					var texto1 = act.replace(/ /g, "") + '[' + act.replace(/ /g, "") + '];\n';
+
+					var cantidad = 0;
+					for (var i in copiaArray) {
+						if (texto1 == copiaArray[i]) {
+							cantidad++;
+							copiaArray[i] = "";
+						}
 					}
-				}
-				console.log(cantidad)
-				if (cantidad == 1) {
-					texto1 = "";
-				}
-				copiaArray.push(texto1);
-				var textochart = copiaArray.toString().split(",").join("").replace(sessionStorage.head, "")
-				sessionStorage.setItem("texto_Value", sessionStorage.head + textochart + sessionStorage.declaration)
-				var flowChart = sessionStorage.head + textochart + sessionStorage.declaration;
-				$('input[name=actividad]').val("");
-				preview.value = flowChart;
-				mermaidAPI.render('svgchart', flowChart, insertSvg, element);
-				}else{
+					console.log(cantidad)
+					if (cantidad == 1) {
+						texto1 = "";
+					}
+					copiaArray.push(texto1);
+					var textochart = copiaArray.toString().split(",").join("").replace(sessionStorage.head, "")
+					sessionStorage.setItem("texto_Value", sessionStorage.head + textochart + sessionStorage.declaration)
+					var flowChart = sessionStorage.head + textochart + sessionStorage.declaration;
+					$('input[name=actividad]').val("");
+					preview.value = flowChart;
+					mermaidAPI.render('svgchart', flowChart, insertSvg, element);
+				} else {
 					alert("Ingrese un nombre al campo");
 				}
 			});

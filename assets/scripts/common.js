@@ -1,3 +1,8 @@
+
+$(window).load(function(){
+    $('#preloadcontent').fadeOut('slow',function(){$(this).remove();});
+});    
+
 // brand section 
 
 var brand = '<a href="index.html">' +
@@ -14,6 +19,15 @@ var menu = '<li>' +
     '</li>' +
     '<li>' +
     '<h4 class="heading">Menú</h4>' +
+    '</li>' +
+    '<li>';
+    if (window.location.pathname.endsWith("x.html"))
+    menu += '<a href="index.html" class="active">';
+else
+    menu += '<a href="index.html">';
+    menu += '<i class="lnr lnr-home"></i>' +
+    '<span>Inicio</span>' +
+    '</a>' +
     '</li>' +
     '<li>';
 if (window.location.pathname.endsWith("ce.html"))
