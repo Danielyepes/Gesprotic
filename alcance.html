@@ -323,12 +323,23 @@
 								</div>
 								<div class="tab-pane fade" id="pills-edt" role="tabpanel" aria-labelledby="pills-edt-tab">
 									<div class="card">
-
-
-
+										<div class="card-title">
+											<h2>
+												Agregar campos al diagrama
+											</h2>
+										</div>
 										<div class="card-body">
 											<div class="table-responsive">
 												<div class="form-group">
+													<div class="col-lg-4 col-md-4 col-sm-12">
+														<div class="form-group">
+															<label for="actividad">Nombre del campo</label>
+															<input id="actividad" name="actividad" class="form-control" type="text">
+														</div>
+														<div class="form-group">
+															<button type="submit" class="btn btn-primary btn-agregar" id="render">Agregar</button>
+														</div>
+													</div>
 													<div class="col-lg-4 col-md-4 col-sm-12">
 														<strong>Ccampos al diagrama</strong><br>
 														<div class="col-md-8 col-sm-10" style="padding-left:0">
@@ -386,16 +397,27 @@
 													<!-- <div class="col-lg-4 col-md-4 col-sm-12">
 														<div class="form-group">
 															<label for="preview">Editor</label>
-															<textarea class="form-control" id="preview" style="height: 231px;" disabled=""></textarea>
-															<br>
+															<textarea class="form-control" id="preview" style="height: 205px;"></textarea>
+														</div>
+														<div class="form-group">
 															<button type="submit" class="btn btn-primary btn-update">Actualizar</button>
-													<!-- </div>
-													</div> -->
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
 
+													</div>
+												</center>
+												<div class="form-group" style="float: right">
+													<button type="submit" class="btn btn-primary boton-guardar">Guardar</button>
+													<!-- <button class="btn btn-primary" id="download_link" href="#">Descargar</button> -->
+												</div>
+											</div>
+										</div>
+
+									</div>
 								</div>
 								<div class="tab-pane fade" id="pills-activity" role="tabpanel" aria-labelledby="pills-activity-tab">
 									<div class="col-sm-8">
@@ -614,23 +636,27 @@
 				} else {
 				texto += res1 + '->' + res2 + '\n';
 				}*/
-				texto += res1.replace(/ /g, "") + '-->' + '| ' + rel + '|' + res2.replace(/ /g, "") + ';\n';
-				// var flowchart = res + texto;
-				if (borrar > 1) {
-					texto = res1.replace(/ /g, "") + '-->' + '| ' + rel + '|' + res2.replace(/ /g, "") + ';\n';
-				}
-				arraylist.push(res1.replace(/ /g, "") + '-->' + '| ' + rel + '|' + res2.replace(/ /g, "") + ';\n');
-				var flowChart = sessionStorage.head + sessionStorage.declaration + texto;
-				if (borrar > 1) {
-					flowChart = sessionStorage.texto_Value + texto;
-				}
-				sessionStorage.setItem("declaration1", texto);
-				// console.log(flowchart)
+				if (res1 == undefined || res2 == undefined) {
+					alert("Por favor agregue campos");
+				} else {
+					texto += res1.replace(/ /g, "") + '-->' + '| ' + rel + '|' + res2.replace(/ /g, "") + ';\n';
+					// var flowchart = res + texto;
+					if (borrar > 1) {
+						texto = res1.replace(/ /g, "") + '-->' + '| ' + rel + '|' + res2.replace(/ /g, "") + ';\n';
+					}
+					arraylist.push(res1.replace(/ /g, "") + '-->' + '| ' + rel + '|' + res2.replace(/ /g, "") + ';\n');
+					var flowChart = sessionStorage.head + sessionStorage.declaration + texto;
+					if (borrar > 1) {
+						flowChart = sessionStorage.texto_Value + texto;
+					}
+					sessionStorage.setItem("declaration1", texto);
+					// console.log(flowchart)
 
-				preview.value = flowChart;
+					preview.value = flowChart;
 
-				sessionStorage.setItem("texto_Value", flowChart);
-				mermaidAPI.render('svgchart', flowChart, insertSvg, element);
+					sessionStorage.setItem("texto_Value", flowChart);
+					mermaidAPI.render('svgchart', flowChart, insertSvg, element);
+				}
 			});
 
 			// $(".btn-update").click(function () {
@@ -712,9 +738,7 @@
 						dataType: "json",
 						type: "POST",
 						data: {
-							flujograma: sessionStorage.getItem("texto_Value"),
-							id_flujograma: sessionStorage.id_flujo,
-							form: 1
+							flujograma: $("#preview").val()
 						},
 						success: function (data) {
 							if (data == 1) {
@@ -722,43 +746,10 @@
 								window.close();
 							}
 						},
-						error: function (data) {}
+						error: function (data) { }
 					});
 				} else {
 					alert("El diagrama está vacío")
-				}
-			});
-			$(".btn-almacenar").click(function () {
-				var description = $("#description").val();
-				var objetivos = $("#objetivos").val();
-				var alcance = $("#alcance").val();
-				var definiciones = $("#definiciones").val();
-				var svg = $("#chart").html();
-				if (description != "" && objetivos != "" && alcance != "" && definiciones != "") {
-					$.ajax({
-						url: 'back/php/addflujograma.php',
-						dataType: "json",
-						type: "POST",
-						data: {
-							descripcion: description,
-							objetivos: objetivos,
-							alcance: alcance,
-							svg: svg,
-							definiciones: definiciones,
-							form: 2
-						},
-						success: function (data) {
-							if (data.finalizado == 1) {
-								alert("Flujograma Guardado");
-								//window.close();
-							}
-						},
-						error: function (data) {
-							console.log(data)
-						}
-					});
-				} else {
-					alert("Necesita llenar esta información");
 				}
 			});
 
