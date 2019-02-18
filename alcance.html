@@ -169,7 +169,7 @@
 											<li class="nav-item active">
 												<a class="nav-link text-primary" id="req-details-tab" data-toggle="pill" href="#req-details" role="tab"
 												 aria-controls="pill-def" aria-selected="true">
-													<i class="fa fa-arrows"></i>Requisito</a>
+													<i class="fa fa-plus-circle"></i>Agregar Requisito</a>
 											</li>
 											<li class="nav-item">
 												<a class="nav-link text-primary" id="pills-requirements-tab" data-toggle="pill" href="#pills-requirements"
@@ -249,74 +249,76 @@
 								</div>
 								<div class="tab-pane fade" id="pills-def" role="tabpanel" aria-labelledby="pills-def-tab">
 									<div class="col-sm-8">
-										<form action="" method="POST" id="scope_form">
-											<h4>
-												<strong>Descripción del alcance del proyecto
-													<span></span>
-												</strong>
-											</h4>
-											<textarea class="form-control" name="descripcion_alcance" id="descripcion_alcance" placeholder="Descripción del alcance"
-											 cols="30" rows="10" required></textarea>
-											<br>
-											<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalentregable">Agregar
-												Entregables</button>
-											<!-- modal entregable -->
-											<div class="modal fade" id="modalentregable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-												<div class="modal-dialog" role="document">
-													<div class="modal-content">
-														<div class="modal-header">
-															<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-															<h4 class="modal-title" id="myModalLabel">Entregables del proyecto</h4>
-														</div>
-														<div class="modal-body">
-															<input type="text" class="form-control" id="nombre_entregable" placeholder="Nombre del entregable">
-															<br>
-															<textarea type="text" class="form-control" id="criterio_entregable" placeholder="Criterio de aceptación del entregable"></textarea>
-															<br>
-															<button class="btn btn-primary btn-ok" type="submit" onclick="sendDeliverable();" data-dismiss="modal">
-																<i class="fa fa-plus-square"> Agregar entregable</i>
-															</button>
-															<br>
-														</div>
-														<div class="modal-footer">
-															<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+										<div class="def_scope">
+											<form action="" method="POST" id="scope_form">
+												<h4>
+													<strong>Descripción del alcance del proyecto
+														<span></span>
+													</strong>
+												</h4>
+												<textarea class="form-control" name="descripcion_alcance" id="descripcion_alcance" placeholder="Descripción del alcance"
+												 cols="30" rows="10" required></textarea>
+												<br>
+												<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalentregable">Agregar
+													Entregables</button>
+												<!-- modal entregable -->
+												<div class="modal fade" id="modalentregable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+													<div class="modal-dialog" role="document">
+														<div class="modal-content">
+															<div class="modal-header">
+																<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+																<h4 class="modal-title" id="myModalLabel">Entregables del proyecto</h4>
+															</div>
+															<div class="modal-body">
+																<input type="text" class="form-control" id="nombre_entregable" placeholder="Nombre del entregable">
+																<br>
+																<textarea type="text" class="form-control" id="criterio_entregable" placeholder="Criterio de aceptación del entregable"></textarea>
+																<br>
+																<button class="btn btn-primary btn-ok" type="submit" onclick="sendDeliverable();" data-dismiss="modal">
+																	<i class="fa fa-plus-square"> Agregar entregable</i>
+																</button>
+																<br>
+															</div>
+															<div class="modal-footer">
+																<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+															</div>
 														</div>
 													</div>
 												</div>
-											</div>
-											<!-- Fin modal entregable -->
-											<h4>
-												<strong>Lista de entregables del proyecto
-													<span></span>
-												</strong>
-											</h4>
-											<table class="table table-striped">
-												<thead>
-													<tr>
-														<td>Nombre</td>
-														<td>Estado</td>
-														<td>Operaciones</td>
-													</tr>
-												</thead>
-												<tbody id="entregable_list">
-												</tbody>
-											</table>
-											<h4 for="">
-												<strong>Requisitos excluidos del proyecto</strong>
-											</h4>
-											<select class="multipleSelect form-control" name="requirementSelect" id="requirementSelect" searchable="Search here.."
-											 multiple required></select>
-											<br>
-											<textarea class="form-control" name="limitaciones" id="limitaciones" placeholder="Limitaciones del alcance del proyecto"
-											 cols="30" rows="10" required></textarea>
-											<br>
-											<textarea class="form-control" name="hipotesis" id="hipotesis" placeholder="Hipotesis del alcance del proyecto"
-											 cols="30" rows="10" required></textarea>
-											<br>
-											<button class="btn btn-primary btn-block" type="submit">
-												<i class="fa fa-save"> Guardar alcance</i>
-											</button>
-										</form>
+												<!-- Fin modal entregable -->
+												<h4>
+													<strong>Lista de entregables del proyecto
+														<span></span>
+													</strong>
+												</h4>
+												<table class="table table-striped">
+													<thead>
+														<tr>
+															<td>Nombre</td>
+															<td>Estado</td>
+															<td>Operaciones</td>
+														</tr>
+													</thead>
+													<tbody id="entregable_list">
+													</tbody>
+												</table>
+												<h4 for="">
+													<strong>Requisitos excluidos del proyecto</strong>
+												</h4>
+												<select class="multipleSelect form-control" name="requirementSelect" id="requirementSelect" searchable="Search here.."
+												 multiple required></select>
+												<br>
+												<textarea class="form-control" name="limitaciones" id="limitaciones" placeholder="Limitaciones del alcance del proyecto"
+												 cols="30" rows="10" required></textarea>
+												<br>
+												<textarea class="form-control" name="hipotesis" id="hipotesis" placeholder="Hipotesis del alcance del proyecto"
+												 cols="30" rows="10" required></textarea>
+												<br>
+												<button class="btn btn-primary btn-block" type="submit">
+													<i class="fa fa-save"> Guardar alcance</i>
+												</button>
+											</form>
+										</div>
 									</div>
 								</div>
 								<div class="tab-pane fade" id="pills-edt" role="tabpanel" aria-labelledby="pills-edt-tab">
@@ -386,7 +388,7 @@
 															<label for="preview">Editor</label>
 															<textarea class="form-control" id="preview" style="height: 231px;" disabled=""></textarea>
 															<br>
-															<!-- <button type="submit" class="btn btn-primary btn-update">Actualizar</button> -->
+															<button type="submit" class="btn btn-primary btn-update">Actualizar</button>
 													<!-- </div>
 													</div> -->
 												</div>
@@ -488,7 +490,7 @@
 	<script src="Logic/Controllers/Reach/reach.js"></script>
 	<script src="assets/scripts/fastsearch.js"></script>
 	<script src="Logic/Controllers/Activity/activity.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.js"></script>
+	<script src="assets/scripts/mermaid.min.js"></script>
 	<script type="text/javascript">
 		$('.multipleSelect').fastselect({
 			placeholder: 'Seleccione los requisitos a excluir',

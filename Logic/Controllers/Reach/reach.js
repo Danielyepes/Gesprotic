@@ -11,6 +11,7 @@ function sendReach() {
         data: {
             descripcion_alcance: descripcion_alcance,
             hipotesis: hipotesis,
+            id_proyecto: localStorage.proyecto,
             limitaciones: limitaciones
         },
         dataType: "html",

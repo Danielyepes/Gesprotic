@@ -28,6 +28,9 @@
 </head>
 
 <body>
+	<div id="preloadcontent">
+		<span id="preloader"></span>
+	</div>
 	<!-- WRAPPER -->
 	<div id="wrapper">
 
@@ -90,7 +93,7 @@
 		<div id="sidebar-nav" class="sidebar">
 			<div class="sidebar-scroll">
 				<nav>
-					<ul class="nav">
+					<ul class="nav" id="menu">
 						<li style="background:white">
 							<a href="https://www.unicartagena.edu.co" target="_blank" style="background:white">
 								<img id="university" class="img-responsive" src="assets/img/logotipo-oficial-unicartagena.png" alt="">
@@ -137,7 +140,8 @@
 						<div class="col-md-4 col-sm-6">
 							<div class="panel">
 								<div class="panel-heading">
-									<h3 class="panel-title" style="cursor:pointer" onclick="window.location.href='alcance.html'">Gestión del alcance</h3>
+									<h3 class="panel-title" style="cursor:pointer" onclick="window.location.href='alcance.html'">Gestión del
+										alcance</h3>
 									<div class="right">
 										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
 									</div>
@@ -185,7 +189,8 @@
 						<div class="col-md-4 col-sm-6 col-md-offset-4">
 							<div class="panel">
 								<div class="panel-heading">
-									<h3 class="panel-title" style="cursor:pointer" onclick="window.location.href='riesgos.html'">Gestión de riesgos</h3>
+									<h3 class="panel-title" style="cursor:pointer" onclick="window.location.href='riesgos.html'">Gestión de
+										riesgos</h3>
 									<div class="right">
 										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
 									</div>
@@ -224,7 +229,16 @@
 	<script src="assets/vendor/chartist/js/chartist.min.js"></script>
 	<script src="assets/scripts/klorofil-common.js"></script>
 	<script src="assets/scripts/common.js"></script>
+	<script>
+		/** 
+		 * Tomar valor de la url
+		 */
+		var cadena = location.href;
+		cadena = cadena.substring(45);
 
+		localStorage.proyecto = cadena;
+		
+	</script>
 </body>
 
 </html>

@@ -2,9 +2,10 @@
 
 include "../php/conect.php";
 
+$id_proyecto = $_POST["id_proyecto"];
 $link = Conection();
 $array = array();
-$sql = "SELECT * FROM requisito";
+$sql = "SELECT * FROM requisito WHERE id_proyecto = $id_proyecto";
 $result = mysqli_query($link, $sql) or die(mysqli_error($link));
 while ($field = mysqli_fetch_array($result)) {
     $id = $field["id"];

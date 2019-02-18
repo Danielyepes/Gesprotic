@@ -9,18 +9,18 @@ function sendDeliverable() {
         type: "POST",
         data: {
             nombre_entregable: nombre_entregable,
+            id_proyecto : localStorage.proyecto,
             criterio_entregable: criterio_entregable
         },
         dataType: "html",
         success: function (data) {
-            console.log(data)
             if (data == "do_it") {
                 var modal =
                     '<div class="modal fade bs-example-modal-sm deliverable" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">' +
                     '<div class="modal-dialog modal-sm" role="document">' +
                     '<div class="modal-content">' +
                     `<div class="modal-body">
-                            Requisito Guardado
+                            Entregable Guardado
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">cerrar</button>
@@ -43,6 +43,9 @@ function deliverableList() {
         url: "Logic/Scripts/Deliverable/DeliverableJSON.php",
         type: "POST",
         dataType: "json",
+        data:{
+            id_proyecto : localStorage.proyecto
+        },
         success: function (data) {
             var response = "";
 
@@ -58,7 +61,7 @@ function deliverableList() {
                     '<td> <button class="btn btn-primary" onclick="editDeliverable(' +
                     data[i].id +
                     ')"><i class="fa fa-pencil"></i></button>'+
-                    ' <button class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete" data-href="Logic/Scripts/deleteRequirement.php?id=' + data[i].id + '"><i class="fa fa-close"></i></button>' +
+                    ' <button class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete" data-href="Logic/Scripts/Deliverable/deleteDeliverable.php?id=' + data[i].id + '"><i class="fa fa-close"></i></button>' +
                     "</td>" +
                     "</tr>";
             }
@@ -76,7 +79,8 @@ function editDeliverable(id) {
         type: "POST",
         dataType: "json",
         data: {
-            id: id
+            id: id,
+            id_proyecto : localStorage.proyecto
         },
         success: function (data) {
             var modalEdit = "";
@@ -155,6 +159,7 @@ function updateDeliverable(id) {
             id: id_Deliverable,
             nombre_deliverable: nombre_deliverable,
             criterio_aceptacion_deliverable: criterio_aceptacion_deliverable,
+            id_proyecto : localStorage.proyecto,
             estado_deliverable: estado_deliverable
         },
         dataType: "html",

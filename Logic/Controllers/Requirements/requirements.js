@@ -13,6 +13,7 @@ function sendRequirement() {
             criterio_acept_req: criterio_acept_req,
             descripcion_req: descripcion_req,
             metrica_acept_req: metrica_acept_req,
+            id_proyecto : localStorage.proyecto,
             prioridad_req: prioridad_req
         },
         dataType: "html",
@@ -49,6 +50,9 @@ function requirementList() {
         url: "Logic/Scripts/RequirementJSON.php",
         type: "POST",
         dataType: "json",
+        data:{
+            id_proyecto : localStorage.proyecto
+        },
         success: function (data) {
             var response = "";
             var options = "";
@@ -91,7 +95,8 @@ function edit(id) {
         type: "POST",
         dataType: "json",
         data: {
-            id: id
+            id: id,
+            id_proyecto : localStorage.proyecto,
         },
         success: function (data) {
             var modalEdit = "";
@@ -187,6 +192,7 @@ function updateReq(id) {
             criterio_acept_req: criterio_acept_req,
             descripcion_req: descripcion_req,
             metrica_acept_req: metrica_acept_req,
+            id_proyecto : localStorage.proyecto,
             prioridad_req: prioridad_req
         },
         dataType: "html",

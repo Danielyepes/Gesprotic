@@ -57,10 +57,12 @@ function projectList() {
                     "<td>" +
                     data[i].id_organizacion +
                     "</td>" +
-                    '<td> <button class="btn btn-primary" onclick="editProject(' +
+                    '<td>'+
+                    '<a class="btn btn-success" href="principal.html?id=' + data[i].id + '"><i class="fa fa-eye"></i></a>' +
+                    '<button class="btn btn-primary" onclick="editProject(' +
                     data[i].id +
                     ')"><i class="fa fa-pencil"></i></button>'+
-                    ' <button class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete-project" data-href="Logic/Scripts/Project/deleteProject.php?id=' + data[i].id + '"><i class="fa fa-close"></i></button>' +
+                    '<button class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete-project" data-href="Logic/Scripts/Project/deleteProject.php?id=' + data[i].id + '"><i class="fa fa-close"></i></button>' +
                     "</td>" +
                     "</tr>";
             }
@@ -87,7 +89,7 @@ function editProject(id) {
                         <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">Editar Entregable</h4>
+                            <h4 class="modal-title">Editar Proyecto</h4>
                         </div>
                         <div class="modal-body">
                         <div class="row">
@@ -103,7 +105,7 @@ function editProject(id) {
                                value="` + data[0].titulo + `" required>
                             <br>
                             <h4>
-                                <strong>Descripción del Entregable
+                                <strong>Organización
                                     <span></span>
                                 </strong>
                             </h4>
