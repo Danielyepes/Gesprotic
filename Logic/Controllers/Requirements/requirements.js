@@ -1,3 +1,5 @@
+requirementList();
+
 function sendRequirement() {
     var nombre_req = $("#nombre_req").val();
     var criterio_acept_req = $("#criterio_acept_req").val();

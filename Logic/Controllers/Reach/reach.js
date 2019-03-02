@@ -1,15 +1,17 @@
+reachList();
 function sendReach() {
     var descripcion_alcance = $("#descripcion_alcance").val();
     var limitaciones = $("#limitaciones").val();
     var hipotesis = $("#hipotesis").val();
     var descripcion_alcance = $("#descripcion_alcance").val();
     var reachSelect = $("#requirementSelect").val();
-    
+
     $.ajax({
         url: "Logic/Scripts/Reach/addReach.php",
         type: "POST",
         data: {
             descripcion_alcance: descripcion_alcance,
+            reachSelect: reachSelect,
             hipotesis: hipotesis,
             id_proyecto: localStorage.proyecto,
             limitaciones: limitaciones
@@ -34,10 +36,27 @@ function sendReach() {
                 $("body").append(modal);
                 $(".reachSave").modal();
             }
+            // document.getElementById("scope_form").reset();
             reachList();
         }
     });
 }
-function reachList(){
+
+function reachList() {
+
+    $.ajax({
+        url: "Logic/Scripts/Reach/getReachreq.php",
+        type: "POST",
+        data: {id_proyecto: localStorage.proyecto},
+        dataType: "json",
+        success: function (data) {
+            $("#descripcion_alcance").val(data[0].descripcion);
+            $("#limitaciones").val(data[0].limitaciones);
+            $("#hipotesis").val(data[0].hipotesis);
+            $("#descripcion_alcance").val(data[0].descripcion);
+        },error:function(data){
+            console.log(data);
+        }
+    });
 
 }
