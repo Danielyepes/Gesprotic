@@ -1,4 +1,5 @@
 reachList();
+
 function sendReach() {
     var descripcion_alcance = $("#descripcion_alcance").val();
     var limitaciones = $("#limitaciones").val();
@@ -47,14 +48,31 @@ function reachList() {
     $.ajax({
         url: "Logic/Scripts/Reach/getReachreq.php",
         type: "POST",
-        data: {id_proyecto: localStorage.proyecto},
+        data: {
+            id_proyecto: localStorage.proyecto
+        },
         dataType: "json",
         success: function (data) {
+
             $("#descripcion_alcance").val(data[0].descripcion);
             $("#limitaciones").val(data[0].limitaciones);
             $("#hipotesis").val(data[0].hipotesis);
-            $("#descripcion_alcance").val(data[0].descripcion);
-        },error:function(data){
+
+            var ultimo = data.length;
+            var opciones = "";
+            for (var i in data[ultimo - 1].array) {
+                opciones += ("<li>" + data[ultimo - 1].array[i].nombre + "</li>");
+            }
+
+            console.log(opciones.length);
+
+            if(opciones.length > 0){
+                $("#requirementExcludeDiv").css("display","block")
+            }
+             $("#requirementExclude").html(opciones)
+
+        },
+        error: function (data) {
             console.log(data);
         }
     });
