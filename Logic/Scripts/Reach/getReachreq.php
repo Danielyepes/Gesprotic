@@ -12,11 +12,13 @@ $sql = "SELECT * FROM alcance WHERE id_proyecto = $id";
 $result = mysqli_query($link, $sql) or die(mysqli_error($link));
 $field = mysqli_fetch_array($result);
 
+    $id_reach = $field["id"];
     $descripcion_alcance = $field["descripcion"];
     $limitaciones = $field["limitaciones"];
     $hipotesis = $field["hipotesis"];
 
     $array[] = array(
+        'id_reach' => $id_reach,
         'descripcion' => $descripcion_alcance,
         'limitaciones' => $limitaciones,
         'hipotesis' => $hipotesis,

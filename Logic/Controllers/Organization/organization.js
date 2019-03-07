@@ -12,7 +12,7 @@ function sendOrganization() {
         },
         dataType: "html",
         success: function (data) {
-            console.log(data)
+            
             if (data == "do_it") {
                 var modal =
                     '<div class="modal fade bs-example-modal-sm organization" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">' +
@@ -34,7 +34,7 @@ function sendOrganization() {
             organizationList();
         },
         error: function (data) {
-            console.log(data)
+            
         }
     });
 }
@@ -45,6 +45,7 @@ function organizationList() {
         type: "POST",
         dataType: "json",
         success: function (data) {
+            
             var response = "";
             var response1 = "";
 
@@ -88,6 +89,7 @@ function editOrganization(id) {
             id: id
         },
         success: function (data) {
+            
             var modalEdit = "";
             modalEdit += `<div class="modal fade" id="modalEditOrganization` + id + `" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
                     <div class="modal-dialog" role="document">

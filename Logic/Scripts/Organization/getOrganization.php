@@ -11,7 +11,7 @@ $sql = "SELECT * FROM organizacion  WHERE id = $id";
 $result = mysqli_query($link, $sql) or die(mysqli_error($link));
 while ($field = mysqli_fetch_array($result)) {
     $id = $field["id"];
-    $nombre = utf8_encode($field["nombre"]);
+    $nombre = $field["nombre"];
     $array[] = array(
         'id' => $id,
         'nombre' => $nombre,
