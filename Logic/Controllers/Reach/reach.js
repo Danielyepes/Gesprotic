@@ -31,13 +31,14 @@ function sendReach() {
                             Alcance Guardado
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reload()">cerrar</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">cerrar</button>
                         </div>` +
                     "</div>" +
                     "</div>" +
                     "</div>";
                 $("body").append(modal);
                 $("#reachSave").modal();
+                $("#requirementSelect").val("");
 
                 
             }
@@ -81,11 +82,4 @@ function reachList() {
         }
     });
 
-}
-
-function reload(){
-    setTimeout( ()=> {
-        location.reload();
-    },
-    100)
 }

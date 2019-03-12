@@ -333,41 +333,39 @@
 									<div class="card">
 										<div class="card-title">
 											<h2>
-												Agregar campos al diagrama
+												Estructura de desglose de trabajo
 											</h2>
 										</div>
 										<div class="card-body">
 											<div class="table-responsive">
+												<div>
+													<h4>Flujos guardados</h4>
+													<br>
+													<ul id="EDTs">
+
+													</ul>
+												</div>
 												<div class="form-group">
-													<div class="col-lg-4 col-md-4 col-sm-12">
-														<div class="form-group">
-															<label for="actividad">Nombre del campo</label>
-															<input id="actividad" name="actividad" class="form-control" type="text">
-														</div>
-														<div class="form-group">
-															<button type="submit" class="btn btn-primary btn-agregar" id="render">Agregar</button>
-														</div>
-													</div>
-													<div class="col-lg-4 col-md-4 col-sm-12">
+													<div class="col-lg-4 col-md-4 col-sm-4">
 														<strong>Ccampos al diagrama</strong><br>
 														<div class="col-md-8 col-sm-10" style="padding-left:0">
 															<input id="actividad" name="actividad" class="form-control" type="text" placeholder="Nombre del campo">
 														</div>
 														<div class="col-md-4 col-sm-2" style="padding:0">
 															<button type="submit" class="btn btn-group btn-primary btn-agregar" id="render"><i class="fa fa-plus"></i></button>
-															<button type="submit" class="btn btn-group btn-danger btn-delete"><i class="fa fa-trash"></i></button>
+															<!-- <button type="submit" class="btn btn-group btn-danger btn-delete"><i class="fa fa-trash"></i></button> -->
 														</div>
 														<hr>
 														<strong>Enlaces</strong>
 														<div class="form-group">
-															<label for="">Elemento 1</label>
-															<select name="" id="elemento1" class="form-control elementos">
+															<label for="">Campo N1</label>
+															<select name="" id="campoN1" class="form-control elementos">
 
 															</select>
 														</div>
 														<div class="form-group">
-															<label for="">Elemento 2</label>
-															<select name="" id="elemento2" class="form-control elementos">
+															<label for="">Campo N2</label>
+															<select name="" id="campoN2" class="form-control elementos">
 															</select>
 														</div>
 														<div class="form-group">
@@ -379,7 +377,7 @@
 															<button type="submit" class="btn btn-danger btn-borrar">borrar</button>
 														</div>
 													</div>
-													<div class="col-lg-4 col-md-4 col-sm-12">
+													<div class="col-lg-4 col-md-4 col-sm-8">
 														<div class="card">
 															<div class="card-title">
 															</div>
@@ -521,6 +519,7 @@
 	<script src="assets/scripts/fastsearch.js"></script>
 	<script src="Logic/Controllers/Activity/activity.js"></script>
 	<script src="assets/scripts/mermaid.min.js"></script>
+	<script src="logic/Controllers/Edt/edt.js"></script>
 	<script type="text/javascript">
 		$('.multipleSelect').fastselect({
 			placeholder: 'Seleccione los requisitos a excluir',
@@ -605,11 +604,8 @@
 				}
 				$(".elementos").append(contenidolista);
 
-				/**
-				contenido tabla
-				*/
 			} else {
-				alert("ingrese un nombre para el campo")
+				alert("ingrese un nombre para el campo");
 			}
 		}
 
@@ -632,9 +628,9 @@
 			var element = document.querySelector("#chart");
 			$(".btn-cargar").click(function () {
 
-				res1 = $("#elemento1 option:selected").val();
+				res1 = $("#campoN1 option:selected").val();
 
-				res2 = $("#elemento2 option:selected").val();
+				res2 = $("#campoN2 option:selected").val();
 
 				rel = $("#nombre-enlace").val();
 
@@ -676,9 +672,9 @@
 
 			$(".btn-borrar").click(function () {
 				borrar++;
-				res1 = $("#elemento1 option:selected").val();
+				res1 = $("#campoN1 option:selected").val();
 
-				res2 = $("#elemento2 option:selected").val();
+				res2 = $("#campoN2 option:selected").val();
 
 				rel = $("#nombre-enlace").val();
 
@@ -694,7 +690,7 @@
 					}
 				}
 				console.log(cantidad)
-				if (cantidad == 1) {
+				if (cantidad > 0) {
 					texto1 = "";
 				}
 				copiaArray.push(texto1);
@@ -704,61 +700,6 @@
 				$("#nombre-enlace").val("");
 				preview.value = flowChart;
 				mermaidAPI.render('svgchart', flowChart, insertSvg, element);
-			});
-			$(".btn-delete").click(function () {
-				if ($('input[name=actividad]').val() != "") {
-
-					var act = $('input[name=actividad]').val();
-
-					var copiaArray = arraylist;
-
-					var array = sessionStorage.declaration.replace(" ", "").split(";\n");
-
-					var texto1 = act.replace(/ /g, "") + '[' + act.replace(/ /g, "") + '];\n';
-
-					var cantidad = 0;
-					for (var i in copiaArray) {
-						if (texto1 == copiaArray[i]) {
-							cantidad++;
-							copiaArray[i] = "";
-						}
-					}
-					console.log(cantidad)
-					if (cantidad == 1) {
-						texto1 = "";
-					}
-					copiaArray.push(texto1);
-					var textochart = copiaArray.toString().split(",").join("").replace(sessionStorage.head, "")
-					sessionStorage.setItem("texto_Value", sessionStorage.head + textochart + sessionStorage.declaration)
-					var flowChart = sessionStorage.head + textochart + sessionStorage.declaration;
-					$('input[name=actividad]').val("");
-					preview.value = flowChart;
-					mermaidAPI.render('svgchart', flowChart, insertSvg, element);
-				} else {
-					alert("Ingrese un nombre al campo");
-				}
-			});
-			$(".boton-guardar").click(function () {
-
-				if ($("#preview").val() != "") {
-					$.ajax({
-						url: 'back/php/addflujograma.php',
-						dataType: "json",
-						type: "POST",
-						data: {
-							flujograma: $("#preview").val()
-						},
-						success: function (data) {
-							if (data == 1) {
-								alert("Flujograma Guardado");
-								window.close();
-							}
-						},
-						error: function (data) { }
-					});
-				} else {
-					alert("El diagrama está vacío")
-				}
 			});
 
 		});

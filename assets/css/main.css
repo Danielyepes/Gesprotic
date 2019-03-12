@@ -2724,3 +2724,7 @@ select multiple
     transform: rotate(360deg);
   }
 }
+
+.center {
+  text-align: center;
+}
