@@ -53,7 +53,12 @@ function getEdt() {
             var modal = "";
 
             for (var i in data) {
-                response = "<li class='label label-primary' onclick='renderizate(" + data[i].id + ")' data-toggle='modal' data-target='.view" + data[i].id + "'>" + data[i].nombre + "</li>";
+                response = "<li>" + data[i].nombre +
+                "<a class='btn btn-primary' onclick='renderizate(" + data[i].id + ")' data-toggle='modal' data-target='.view" + data[i].id + "'>"+
+                '<i class="fa fa-eye"></i> </a>'+
+                '<a class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete-edt" data-href="Logic/Scripts/Edt/deleteEdt.php?id=' + data[i].id + '" >'+
+                '<i class="fa fa-close"></i> </a>'+
+                "</li>";
 
                 modal = '<div class="modal fade bs-example-modal-lg view' + data[i].id + '" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">' +
                     '<div class="modal-dialog modal-lg" role="document">' +

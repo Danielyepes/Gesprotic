@@ -506,6 +506,24 @@
 			</div>
 		</div>
 	</div>
+	<div class="modal fade" id="confirm-delete-edt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+	aria-hidden="true">
+	   <div class="modal-dialog">
+		   <div class="modal-content">
+			   <div class="modal-header">
+				   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				   <h4 class="modal-title" id="myModalLabel">Confirmar Eliminado</h4>
+			   </div>
+			   <div class="modal-body">
+				   <p>¿Usted esta seguro que desea eliminar este EDT?</p>
+			   </div>
+			   <div class="modal-footer">
+				   <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+				   <a class="btn btn-danger" id="btn-delete-edt">Eliminar</a>
+			   </div>
+		   </div>
+	   </div>
+   </div>
 	<!-- Javascript -->
 	<script src="assets/vendor/jquery/jquery.min.js"></script>
 	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -541,6 +559,10 @@
 		});
 		$('#confirm-delete').on('show.bs.modal', function (e) {
 			$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+			//			$('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
+		});
+		$('#confirm-delete-project').on('show.bs.modal', function (e) {
+			$(this).find('#btn-delete-edt').attr('href', $(e.relatedTarget).data('href'));
 			//			$('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
 		});
 	</script>
