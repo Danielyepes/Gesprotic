@@ -49,37 +49,21 @@ function getEdt() {
             id_alcance: alcance
         },
         success: function (data) {
+            console.log(data)
             var response = "";
             var modal = "";
 
             for (var i in data) {
-                response = "<li>" + data[i].nombre +
-                "<a class='btn btn-primary' onclick='renderizate(" + data[i].id + ")' data-toggle='modal' data-target='.view" + data[i].id + "'>"+
-                '<i class="fa fa-eye"></i> </a>'+
-                '<a class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete-edt" data-href="Logic/Scripts/Edt/deleteEdt.php?id=' + data[i].id + '" >'+
-                '<i class="fa fa-close"></i> </a>'+
-                "</li>";
+                response += "<tr><td>" + data[i].nombre + '</td>' +
+                    "<td><a class='btn btn-primary' onclick='modalviewEdt(" + data[i].id + ", `" + data[i].nombre + "`, `" + data[i].edt + "`)' data-toggle='modal'>" +
+                    '<i class="fa fa-eye"></i> </a>' +
+                    '<a class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete-edt" data-href="Logic/Scripts/Edt/deleteEdt.php?id=' + data[i].id + '" >' +
+                    '<i class="fa fa-close"></i> </a></td>' +
+                    "</tr>";
 
-                modal = '<div class="modal fade bs-example-modal-lg view' + data[i].id + '" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">' +
-                    '<div class="modal-dialog modal-lg" role="document">' +
-                    '<div class="modal-content">' +
-                    `<div class="modal-body">
-                        <div class='center'>
-                            <h2>`+data[i].nombre+`</h2>
-                            <br>
-                            <textarea class="EDTpreview" style="display:none" id="viewEDT` + data[i].id + `" >` + data[i].edt + `</textarea>
-                            <div id="graphDiv"></div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">cerrar</button>
-                    </div>` +
-                    "</div>" +
-                    "</div>" +
-                    "</div>";
             }
             $("#EDTs").html(response);
-            $("body").append(modal);
+
 
         },
         error: function (data) {
@@ -91,20 +75,53 @@ function getEdt() {
 
 
 
-var SvgInsert = function (svgCode, bindFunctions) {
-    var element = document.querySelector("#graphDiv");
-    element.innerHTML = svgCode;
-    bindFunctions(element);
-};
+var element;
 
 function renderizate(id) {
 
-    setTimeout(()=>{
-    // $(".view" + id).on('show.bs.modal', function (e) {
-    var element = document.querySelector("#graphDiv");
-    var graph = $("#viewEDT" + id).val();
-    mermaidAPI.render('svgChart', graph, SvgInsert, element);
-    },200);
+    setTimeout(() => {
+        // $(".view" + id).on('show.bs.modal', function (e) {
+        element = document.querySelector("#graphDiv" + id);
+        var graph = $("#viewEDT" + id).val();
+        console.log(mermaid.parse(graph))
+        mermaidAPI.render('svgChart', graph, SvgInsert, element);
+        mermaid.parseError = function (err, hash) {
+            console.log(err);
+        };
+    }, 200);
+}
 
+var SvgInsert = function (svgCode, bindFunctions) {
+    element.innerHTML = svgCode;
+};
+
+
+function modalviewEdt(id, nombre, edt) {
+    modal = '<div class="modal fade bs-example-modal-lg view' + id + '" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">' +
+        '<div class="modal-dialog modal-lg" role="document">' +
+        '<div class="modal-content">' +
+        `<div class="modal-body">
+        <div class='center'>
+            <h2>` + nombre + `</h2>
+            <br>
+            <textarea class="mermaid EDTpreview" style="dislay:none" id="viewEDT` + id + `" >` + edt + `</textarea>
+            <div id="graphDiv` + id + `"></div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">cerrar</button>
+    </div>` +
+        "</div>" +
+        "</div>" +
+        "</div>";
+    if ($(".modal").hasClass("view" + id)) {
+        $(".view" + id).modal("show");
+    } else {
+        $("body").append(modal);
+        $(".view" + id).modal("show");
+        setTimeout(() => {
+            renderizate(id);
+        }, 100)
+    }
 
 }
