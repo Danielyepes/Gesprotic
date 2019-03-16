@@ -18,10 +18,18 @@ while ($field = mysqli_fetch_array($result)) {
     $resultOrg = mysqli_query($link, $sqlOrg) or die(mysqli_error($link));
     $fieldOrg = mysqli_fetch_array($resultOrg);
     $id_organizacion = utf8_encode($fieldOrg["nombre"]);
+
+    $id_responsable = $field["id_responsable"];
+    $sqlResp = "SELECT * FROM responsable  WHERE id =  $id_responsable";
+    $resultResp = mysqli_query($link, $sqlResp) or die(mysqli_error($link));
+    $fieldResp = mysqli_fetch_array($resultResp);
+    $id_responsable = utf8_encode($fieldResp["nombre"]);
+    
     $array[] = array(
         'id' => $id,
         'titulo' => $titulo,
         'id_organizacion' => $id_organizacion,
+        'id_responsable' => $id_responsable,
 
     );
 }

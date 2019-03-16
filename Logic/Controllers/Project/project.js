@@ -4,12 +4,14 @@ $(document).ready(function(){
 function sendProject() {
     var nombre_proyecto = $("#nombre_proyecto").val();
     var organizationproject = $("#organizationproject").val();
+    var responsableproject = $("#responsableproject").val();
     $.ajax({
         url: "Logic/Scripts/Project/addproject.php",
         type: "POST",
         data: {
             titulo: nombre_proyecto,
-            id_organizacion: organizationproject
+            id_organizacion: organizationproject,
+            id_responsable: responsableproject
         },
         dataType: "html",
         success: function (data) {
@@ -56,6 +58,9 @@ function projectList() {
                     "</td>" +
                     "<td>" +
                     data[i].id_organizacion +
+                    "</td>" +
+                    "<td>" +
+                    data[i].id_responsable +
                     "</td>" +
                     '<td>'+
                     '<a class="btn btn-success" href="principal.html?id=' + data[i].id + '"><i class="fa fa-eye"></i></a>' +

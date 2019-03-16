@@ -129,8 +129,8 @@
 										<i class="lnr lnr-apartment"></i> Gestionar organización</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link text-primary" id="pills-responsable-tab" data-toggle="pill" href="#pills-responsable"
-									 role="tab" aria-controls="pills-responsable" aria-selected="true">
+									<a class="nav-link text-primary" id="pills-responsable-tab" data-toggle="pill" href="#pills-responsable" role="tab"
+									 aria-controls="pills-responsable" aria-selected="true">
 										<i class="lnr lnr-person"></i> Gestionar responsables</a>
 								</li>
 
@@ -146,7 +146,7 @@
 							<div class="tab-content" id="pills-tabContent">
 								<div class="tab-pane fade active in" id="pills-organization" role="tabpanel" aria-labelledby="pills-organization-tab">
 									<div class="row">
-										<div class="col-md-8">
+										<div class="col-md-5">
 											<form id="organization-form" method="POST">
 												<h4>
 													<strong>Nombre de la organización
@@ -160,6 +160,8 @@
 													<i class="fa fa-save"> Agregar organización</i>
 												</button>
 											</form>
+										</div>
+										<div class="col-md-8">
 											<br>
 											<h4>
 												<strong>Lista de organizaciones
@@ -181,7 +183,7 @@
 								</div>
 								<div class="tab-pane fade" id="pills-responsable" role="tabpanel" aria-labelledby="pills-responsable-tab">
 									<div class="row">
-										<div class="col-md-8">
+										<div class="col-md-5">
 											<form id="responsable-form" method="POST">
 												<h4>
 													<strong>Nombre del responsable
@@ -196,6 +198,8 @@
 												</button>
 											</form>
 											<br>
+										</div>
+										<div class="col-md-8">
 											<h4>
 												<strong>Lista de responsables
 													<span></span>
@@ -217,7 +221,7 @@
 
 								<div class="tab-pane fade" id="pills-project" role="tabpanel" aria-labelledby="pills-project-tab">
 									<div class="row">
-										<div class="col-md-8">
+										<div class="col-md-5">
 											<form id="project-form" method="POST">
 												<h4>
 													<strong>Nombre del proyecto
@@ -228,15 +232,18 @@
 												 required>
 												<br>
 												<select class="form-control" name="organizationproject" id="organizationproject">
-
 												</select>
-
+												<br>
+												<select class="form-control" name="responsableproject" id="responsableproject">
+												</select>
 												<br>
 												<button class="btn btn-primary btn-block" type="submit">
 													<i class="fa fa-save"> Agregar proyecto</i>
 												</button>
 											</form>
 											<br>
+										</div>
+										<div class="col-md-8">
 											<h4>
 												<strong>Lista de proyectos
 													<span></span>
@@ -248,6 +255,8 @@
 														<td>Id</td>
 														<td>Nombre del proyecto</td>
 														<td>Organización</td>
+														<td>Responsable</td>
+														<td></td>
 													</tr>
 												</thead>
 												<tbody id="project_list">
@@ -310,6 +319,24 @@
 			</div>
 		</div>
 	</div>
+	<div class="modal fade" id="confirm-delete-responsable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+	 aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Confirmar Eliminado</h4>
+				</div>
+				<div class="modal-body">
+					<p>¿Usted esta seguro que desea eliminar este responsable?</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					<a class="btn btn-danger btn-ok">Eliminar</a>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- Javascript -->
 	<script src="assets/vendor/jquery/jquery.min.js"></script>
 	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -338,6 +365,10 @@
 			//			$('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
 		});
 		$('#confirm-delete-project').on('show.bs.modal', function (e) {
+			$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+			//			$('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
+		});
+		$('#confirm-delete-responsable').on('show.bs.modal', function (e) {
 			$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
 			//			$('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
 		});
