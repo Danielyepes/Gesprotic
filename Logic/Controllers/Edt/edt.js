@@ -7,7 +7,7 @@ $(".boton-guardar").click(function () {
 
         var alcance = $("#id_reach").val();
         var edt = $("#preview").val();
-        var nombre_edt = prompt("Ingrese el nombre del edt");
+        var nombre_edt = prompt("Ingrese el codigo del edt");
 
         if (alcance != "") {
             $.ajax({
@@ -53,15 +53,6 @@ function getEdt() {
             var response = "";
             var modal = "";
 
-            for (var i in data) {
-                response += "<tr><td>" + data[i].nombre + '</td>' +
-                    "<td><a class='btn btn-primary' onclick='modalviewEdt(" + data[i].id + ", `" + data[i].nombre + "`, `" + data[i].edt + "`)' data-toggle='modal'>" +
-                    '<i class="fa fa-eye"></i> </a>' +
-                    '<a class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete-edt" data-href="Logic/Scripts/Edt/deleteEdt.php?id=' + data[i].id + '" >' +
-                    '<i class="fa fa-close"></i> </a></td>' +
-                    "</tr>";
-
-            }
             $("#EDTs").html(response);
 
 

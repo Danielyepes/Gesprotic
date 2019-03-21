@@ -48,9 +48,10 @@ function responsableList() {
         success: function (data) {
             
             var response = "";
-            var response1 = "";
+            var response1 = "<option selected disabled >Seleciona un responsable</option>";
 
             for (var i in data) {
+                //table
                 response +=
                     "<tr>" +
                     "<td>" +
@@ -65,6 +66,7 @@ function responsableList() {
                     ' <button class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete-responsable" data-href="Logic/Scripts/Responsable/deleteResponsable.php?id=' + data[i].id + '"><i class="fa fa-close"></i></button>' +
                     "</td>" +
                     "</tr>";
+                    //select
                     response1 +=
                     "<option value='" +
                     data[i].id +

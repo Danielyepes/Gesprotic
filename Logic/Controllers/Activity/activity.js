@@ -1,3 +1,4 @@
+activityList();
 function sendActivity() {
     var nombre_actividad = $("#nombre_actividad").val();
     var descripcion_actividad = $("#descripcion_actividad").val();
@@ -8,23 +9,23 @@ function sendActivity() {
      * Calculate final date
      */
     let fecha = new Date(fecha_inicio_actividad);
-    console.log(fecha+"before")
-    fecha.setDate(fecha.getDate()+parseInt(duracion_actividad));
+    console.log(fecha + "before")
+    fecha.setDate(fecha.getDate() + parseInt(duracion_actividad));
     /**
      * fin calculate
      */
     console.log(fecha)
-    var fecha_fin_actividad = fecha.getFullYear()+"-"+(fecha.getMonth()+1)+"-"+(fecha.getDate()+1);//calculate
+    var fecha_fin_actividad = fecha.getFullYear() + "-" + (fecha.getMonth() + 1) + "-" + (fecha.getDate() + 1); //calculate
     console.log(fecha_fin_actividad)
     $.ajax({
         url: "Logic/Scripts/Activity/addActivity.php",
         type: "POST",
         data: {
-            nombre_actividad:nombre_actividad,
-            descripcion_actividad:descripcion_actividad,
-            duracion_actividad:duracion_actividad,
-            fecha_inicio_actividad:fecha_inicio_actividad,
-            fecha_fin_actividad:fecha_fin_actividad
+            nombre_actividad: nombre_actividad,
+            descripcion_actividad: descripcion_actividad,
+            duracion_actividad: duracion_actividad,
+            fecha_inicio_actividad: fecha_inicio_actividad,
+            fecha_fin_actividad: fecha_fin_actividad
         },
         dataType: "html",
         success: function (data) {
@@ -58,9 +59,12 @@ function sendActivity() {
 
 function activityList() {
     $.ajax({
-        url: "Logic/Scripts/Deliverable/DeliverableJSON.php",
+        url: "Logic/Scripts/Activity/ActivityJSON.php",
         type: "POST",
         dataType: "json",
+        data: {
+            id_proyecto: localStorage.proyecto
+        },
         success: function (data) {
             var response = "";
 
@@ -68,27 +72,24 @@ function activityList() {
                 response +=
                     "<tr>" +
                     "<td>" +
+                    data[i].id +
+                    "</td>" +
+                    "<td>" +
                     data[i].nombre +
                     "</td>" +
                     "<td>" +
-                    data[i].estado +
-                    "</td>" +
-                    '<td> <button class="btn btn-primary" onclick="editDeliverable(' +
-                    data[i].id +
-                    ')"><i class="fa fa-pencil"></i></button>'+
-                    ' <button class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete" data-href="Logic/Scripts/deleteRequirement.php?id=' + data[i].id + '"><i class="fa fa-close"></i></button>' +
-                    "</td>" +
-                    "</tr>";
+                    data[i].descripcion +
+                    "</td>";
             }
             if (response == "") {
                 response = '<tr><td colspan="5"><strong>No hay Entregables agregados</strong></td></tr>';
             }
-            $("#entregable_list").html(response);
+            $("#listar_Actividades").html(response);
         }
     });
 }
 
-function editDeliverable(id) {
+function editActivity(id) {
     $.ajax({
         url: "Logic/Scripts/Deliverable/getDeliverable.php",
         type: "POST",
@@ -197,4 +198,21 @@ function updateDeliverable(id) {
         }
     });
     return false;
+}
+
+function getImagen(){
+    $.ajax({
+        url: "Logic/Scripts/Activity/getImagen.php",
+        type: "POST",
+        data: {
+            id_proyecto: localStorage.proyecto,
+        },
+        dataType: "html",
+        success: function (data) {
+            if(data  != ""){
+                $("#imagen-diagrama").attr("src","Logic/Scripts/Activity/"+data);
+            }
+            
+        }
+    });
 }

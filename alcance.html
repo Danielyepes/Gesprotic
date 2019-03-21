@@ -338,48 +338,47 @@
 										</div>
 										<div class="card-body">
 											<div class="table-responsive">
-												<div class="row">
-													<div class="col-md-8">
-														<h4>Flujos guardados</h4>
-														<br>
-														<table class="table ">
-															<thead>
-																<tr>
-																	<th>Nombre EDT</th>
-																	<th>opciones</th>
-																</tr>
-															</thead>
-															<tbody id="EDTs">
-
-															</tbody>
-														</table>
-													</div>
-												</div>
 												<div class="form-group">
-													<div class="col-lg-4 col-md-4 col-sm-4">
-														<strong>Campos al diagrama</strong><br>
-														<div class="col-md-8 col-sm-10" style="padding-left:0">
-															<input id="actividad" name="actividad" class="form-control" type="text" placeholder="Nombre del campo">
+													<div class="col-lg-5 col-md-5 col-sm-5">
+														<strong>Tarea</strong><br>
+														<div class="col-md-10 col-sm-10" style="padding-left:0">
+															<div class="form-group">
+																<label for="actividad">Nombre de la actividad</label>
+																<input id="actividad" name="actividad" class="form-control" type="text" placeholder="Nombre de la tarea">
+															</div>
+															<div class="form-group">
+																<label for="activitydescript">Descripción de la tarea</label>
+																<textarea id="activitydescript" name="activitydescript" class="form-control" style="height:100px"
+																placeholder="Descripción de la tarea"></textarea>
+															</div>
+															<div class="form-group">
+																<label for="responsableproject">Responsable</label>
+																<select class="form-control" name="responsableproject" id="responsableproject"></select>
+															</div>
 														</div>
-														<div class="col-md-4 col-sm-2" style="padding:0">
-															<button type="submit" class="btn btn-group btn-primary btn-agregar" id="render"><i class="fa fa-plus"></i></button>
+														<div class="col-md-2 col-sm-2" style="padding:0">
+															<div class="form-group">
+																<label for="render"> </label>
+																<br>
+																<button type="submit" class="btn btn-group btn-primary btn-agregar" id="render"><i class="fa fa-plus"></i></button>
+															</div>
 															<!-- <button type="submit" class="btn btn-group btn-danger btn-delete"><i class="fa fa-trash"></i></button> -->
 														</div>
 														<hr>
-														<strong>Enlaces</strong>
+														<h3><strong>Enlaces</strong></h3>
 														<div class="form-group">
-															<label for="">Campo N1</label>
-															<select name="" id="campoN1" class="form-control elementos">
+															<label for="">Actividad N1</label>
+															<select name="" id="tareaN1" class="form-control elementos">
 
 															</select>
 														</div>
 														<div class="form-group">
-															<label for="">Campo N2</label>
-															<select name="" id="campoN2" class="form-control elementos">
+															<label for="">Actividad N2</label>
+															<select name="" id="tareaN2" class="form-control elementos">
 															</select>
 														</div>
 														<div class="form-group">
-															<label for="">Nombre Enlaces</label>
+															<label for="">Nombre del enlace</label>
 															<input class="form-control" type="text" name="" id="nombre-enlace">
 														</div>
 														<div class="form-group">
@@ -387,7 +386,7 @@
 															<button type="submit" class="btn btn-danger btn-borrar">borrar</button>
 														</div>
 													</div>
-													<div class="col-lg-4 col-md-4 col-sm-8">
+													<div class="col-lg-7 col-md-7 col-sm-7">
 														<div class="card">
 															<div class="card-title">
 															</div>
@@ -544,6 +543,7 @@
 	<script src="assets/scripts/fastsearch.js"></script>
 	<script src="Logic/Controllers/Activity/activity.js"></script>
 	<script src="assets/scripts/mermaid.min.js"></script>
+	<script src="Logic/Controllers/Responsable/responsable.js"></script>
 	<script src="logic/Controllers/Edt/edt.js"></script>
 	<script type="text/javascript">
 		$('.multipleSelect').fastselect({
@@ -634,7 +634,7 @@
 				$(".elementos").append(contenidolista);
 
 			} else {
-				alert("ingrese un nombre para el campo");
+				alert("ingrese un nombre para la tarea");
 			}
 		}
 
@@ -701,9 +701,9 @@
 
 			$(".btn-borrar").click(function () {
 				borrar++;
-				res1 = $("#campoN1 option:selected").val();
+				res1 = $("#N1 option:selected").val();
 
-				res2 = $("#campoN2 option:selected").val();
+				res2 = $("#N2 option:selected").val();
 
 				rel = $("#nombre-enlace").val();
 
