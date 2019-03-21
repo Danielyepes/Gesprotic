@@ -90,7 +90,16 @@ if (window.location.pathname.endsWith("x.html")) {
         '<i class="lnr lnr-home"></i>' +
         '<span>Inicio</span>' +
         '</a>' +
-        '</li>' ;
+        '</li>';
+} else {
+    setTimeout(
+        function(){
+            if (localStorage.proyecto == "") {
+                alert("Seleccione un proyecto para continuar");
+                window.location.href = "index.html";
+            }
+        }, 2000
+    );
 }
 $("#menu").html(menu);
 

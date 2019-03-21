@@ -25,9 +25,20 @@
 	<!-- ICONS -->
 	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+	<script>
+		/** 
+		 * Tomar valor de la url
+		 */
+		function getIdfromUri() {
+			var cadena = location.href;
+			cadena = cadena.substring(45);
+
+			localStorage.proyecto = cadena;
+		}
+	</script>
 </head>
 
-<body>
+<body onload="getIdfromUri()">
 	<div id="preloadcontent">
 		<span id="preloader"></span>
 	</div>
@@ -96,7 +107,8 @@
 					<ul class="nav" id="menu">
 						<li style="background:white">
 							<a href="https://www.unicartagena.edu.co" target="_blank" style="background:white">
-								<img id="university" class="img-responsive" src="assets/img/logotipo-oficial-unicartagena.png" alt="">
+								<img id="university" class="img-responsive"
+									src="assets/img/logotipo-oficial-unicartagena.png" alt="">
 							</a>
 						</li>
 						<li>
@@ -140,13 +152,16 @@
 						<div class="col-md-4 col-sm-6">
 							<div class="panel">
 								<div class="panel-heading">
-									<h3 class="panel-title" style="cursor:pointer" onclick="window.location.href='alcance.html'">Gestión del
+									<h3 class="panel-title" style="cursor:pointer"
+										onclick="window.location.href='alcance.html'">Gestión del
 										alcance</h3>
 									<div class="right">
-										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+										<button type="button" class="btn-toggle-collapse"><i
+												class="lnr lnr-chevron-up"></i></button>
 									</div>
 								</div>
-								<div class="panel-body no-padding bg-primary text-center" style="cursor:pointer" onclick="window.location.href='alcance.html'">
+								<div class="panel-body no-padding bg-primary text-center" style="cursor:pointer"
+									onclick="window.location.href='alcance.html'">
 									<div class="padding-top-30 padding-bottom-30">
 										<i class="lnr lnr-chart-bars fa-5x"></i>
 										<h3>Gestión del alcance</h3>
@@ -157,12 +172,15 @@
 						<div class="col-md-4 col-sm-6">
 							<div class="panel">
 								<div class="panel-heading">
-									<h3 class="panel-title" style="cursor:pointer" onclick="window.location.href='tiempo.html'">Gestión de tiempo</h3>
+									<h3 class="panel-title" style="cursor:pointer"
+										onclick="window.location.href='tiempo.html'">Gestión de tiempo</h3>
 									<div class="right">
-										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+										<button type="button" class="btn-toggle-collapse"><i
+												class="lnr lnr-chevron-up"></i></button>
 									</div>
 								</div>
-								<div class="panel-body no-padding bg-primary text-center" style="cursor:pointer" onclick="window.location.href='tiempo.html'">
+								<div class="panel-body no-padding bg-primary text-center" style="cursor:pointer"
+									onclick="window.location.href='tiempo.html'">
 									<div class="padding-top-30 padding-bottom-30">
 										<i class="lnr lnr-clock fa-5x"></i>
 										<h3>Gestión de tiempo</h3>
@@ -173,12 +191,15 @@
 						<div class="col-md-4 col-sm-6">
 							<div class="panel">
 								<div class="panel-heading">
-									<h3 class="panel-title" style="cursor:pointer" onclick="window.location.href='costes.html'">Gestión de costes</h3>
+									<h3 class="panel-title" style="cursor:pointer"
+										onclick="window.location.href='costes.html'">Gestión de costes</h3>
 									<div class="right">
-										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+										<button type="button" class="btn-toggle-collapse"><i
+												class="lnr lnr-chevron-up"></i></button>
 									</div>
 								</div>
-								<div class="panel-body no-padding bg-primary text-center" style="cursor:pointer" onclick="window.location.href='costes.html'">
+								<div class="panel-body no-padding bg-primary text-center" style="cursor:pointer"
+									onclick="window.location.href='costes.html'">
 									<div class="padding-top-30 padding-bottom-30">
 										<i class="lnr lnr-diamond fa-5x"></i>
 										<h3>Gestión de costes</h3>
@@ -189,13 +210,16 @@
 						<div class="col-md-4 col-sm-6 col-md-offset-4">
 							<div class="panel">
 								<div class="panel-heading">
-									<h3 class="panel-title" style="cursor:pointer" onclick="window.location.href='riesgos.html'">Gestión de
+									<h3 class="panel-title" style="cursor:pointer"
+										onclick="window.location.href='riesgos.html'">Gestión de
 										riesgos</h3>
 									<div class="right">
-										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+										<button type="button" class="btn-toggle-collapse"><i
+												class="lnr lnr-chevron-up"></i></button>
 									</div>
 								</div>
-								<div class="panel-body no-padding bg-primary text-center" style="cursor:pointer" onclick="window.location.href='riesgos.html'">
+								<div class="panel-body no-padding bg-primary text-center" style="cursor:pointer"
+									onclick="window.location.href='riesgos.html'">
 									<div class="padding-top-30 padding-bottom-30">
 										<i class="lnr lnr-warning fa-5x"></i>
 										<h3>Gestión de riesgos</h3>
@@ -229,16 +253,6 @@
 	<script src="assets/vendor/chartist/js/chartist.min.js"></script>
 	<script src="assets/scripts/klorofil-common.js"></script>
 	<script src="assets/scripts/common.js"></script>
-	<script>
-		/** 
-		 * Tomar valor de la url
-		 */
-		var cadena = location.href;
-		cadena = cadena.substring(45);
-
-		localStorage.proyecto = cadena;
-		
-	</script>
 </body>
 
 </html>
